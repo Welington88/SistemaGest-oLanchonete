@@ -5,7 +5,9 @@
         <group>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/GUI/Index.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Utilitarios/CorretorDatas.java</file>
-            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/lanchonete/Lanchonete.java</file>
+            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Beans/ClienteBeans.java</file>
+            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/GUI/ClienteForm.java</file>
+            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Utilitarios/Conexao.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Utilitarios/FundoTela.java</file>
         </group>
     </open-files>

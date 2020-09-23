@@ -5,17 +5,31 @@
  */
 package GUI;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
+
 /**
  *
  * @author welingtonmarquezini
  */
 public class ClienteForm extends javax.swing.JInternalFrame {
-
     /**
      * Creates new form ClienteForm
      */
+    MaskFormatter formatoTel;
+    SimpleDateFormat formatoData;
+    Date dataAtual;
     public ClienteForm() {
         initComponents();
+        txt_codigo.setEnabled(false);
+        habilitarCampos(false);
+        formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        dataAtual = new Date();
+        txt_data.setText(formatoData.format(dataAtual));
+                
     }
 
     /**
@@ -36,7 +50,13 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txt_bairro = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txt_telefone = new javax.swing.JTextField();
+        try {
+            formatoTel = new MaskFormatter("(##) #####-####");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                "Erro inserir Telefone", "Erro", 0);//mensagem de erro
+        }
+        txt_telefone = new JFormattedTextField(formatoTel);
         jLabel6 = new javax.swing.JLabel();
         txt_data = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -52,6 +72,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         setTitle("Cadastro Clientes");
 
         jLabel1.setText("Código:");
+
+        txt_codigo.setEditable(false);
 
         jLabel2.setText("Nome:");
 
@@ -74,6 +96,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         jLabel5.setText("Telefone:");
 
         jLabel6.setText("Data:");
+
+        txt_data.setEditable(false);
 
         jLabel7.setText("Buscar");
 
@@ -99,6 +123,11 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tb_clientes);
 
         btn_novo.setText("Novo");
+        btn_novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_novoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,6 +236,18 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_bairroActionPerformed
 
+    private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
+        // TODO add your handling code here:
+        habilitarCampos(true);
+    }//GEN-LAST:event_btn_novoActionPerformed
+
+    final void habilitarCampos(boolean valor){
+        txt_bairro.setEnabled(valor);
+        txt_rua.setEnabled(valor);
+        txt_nome.setEnabled(valor);
+        txt_telefone.setEnabled(valor);
+        txt_data.setEnabled(valor);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_novo;

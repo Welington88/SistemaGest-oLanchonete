@@ -156,6 +156,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_codigo">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -190,6 +193,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_telefone">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JFormattedTextField(formatoTel);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try {&#xa;  formatoTel = new MaskFormatter(&quot;(##) #####-####&quot;);           &#xa;} catch (Exception e) {&#xa;    JOptionPane.showMessageDialog(null, &#xa;            &quot;Erro inserir Telefone&quot;, &quot;Erro&quot;, 0);//mensagem de erro&#xa;}"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -197,6 +204,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_data">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
@@ -235,6 +245,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_novoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
