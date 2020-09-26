@@ -1,5 +1,4 @@
 package Beans;
-
 /**
  *
  * @author welingtonmarquezini
@@ -63,5 +62,4 @@ public class ClienteBeans {
     public void setDataCad(String DataCad) {
         this.DataCad = DataCad;
     }
-    
 }

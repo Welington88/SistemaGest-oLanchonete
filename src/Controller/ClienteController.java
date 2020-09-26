@@ -42,5 +42,8 @@ public class ClienteController {
             clienteDAO.cadastroCliente(cliente);
             return true;
         }
-    };
+    }
+    public String controleDeCódigo () {
+        return clienteDAO.proximoCliente();
+    }
 }
