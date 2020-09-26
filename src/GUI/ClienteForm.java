@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Beans.ClienteBeans;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFormattedTextField;
@@ -22,6 +23,9 @@ public class ClienteForm extends javax.swing.JInternalFrame {
     MaskFormatter formatoTel;
     SimpleDateFormat formatoData;
     Date dataAtual;
+    ClienteBeans clienteBeans;
+    
+    
     public ClienteForm() {
         initComponents();
         txt_codigo.setEnabled(false);
@@ -29,7 +33,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         formatoData = new SimpleDateFormat("dd/MM/yyyy");
         dataAtual = new Date();
         txt_data.setText(formatoData.format(dataAtual));
-                
+        clienteBeans = new ClienteBeans();
+        
     }
 
     /**
@@ -66,6 +71,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_clientes = new javax.swing.JTable();
         btn_novo = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -129,6 +135,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,6 +185,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_novo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -221,7 +231,9 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(btn_novo)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_novo)
+                            .addComponent(jButton1))
                         .addGap(57, 57, 57))))
         );
 
@@ -248,9 +260,18 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         txt_telefone.setEnabled(valor);
         txt_data.setEnabled(valor);
     }
+    
+    final void popularClienteBeans() {//void não retorna nenhum metodo
+        clienteBeans.setNome(txt_nome.getText());
+        clienteBeans.setBairro(txt_bairro.getText());
+        clienteBeans.setRua(txt_rua.getText());
+        clienteBeans.setTelefone(txt_telefone.getText());
+        clienteBeans.setDataCad(txt_data.getText());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_novo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
