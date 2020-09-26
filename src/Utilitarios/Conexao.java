@@ -21,6 +21,7 @@ public class Conexao {
     public Conexao() {
         try {
             Con = DriverManager.getConnection(URL, Usuario, Senha);
+            Con.setAutoCommit(false);
             JOptionPane.showMessageDialog(null, 
                     "Tudo Certo", "Banco", 1);
         } catch (Exception e) {
