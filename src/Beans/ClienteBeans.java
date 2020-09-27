@@ -3,7 +3,7 @@ package Beans;
  *
  * @author welingtonmarquezini
  */
-public class ClienteBeans {
+public class ClienteBeans {//classe model
     private int Codigo;
     private String Nome;
     private String Rua;

@@ -103,4 +103,27 @@ public class ClienteDAO {
         }
         return clienteBeans;
     }
+    //-----------------------------------------------------------------------------------------------
+    public void editarCliente(ClienteBeans cliente) {
+        
+        try {
+            String SQLInsertion = 
+                "UPDATE `clientes` SET `cli_nome`=?,`cli_rua`=?,`cli_bairro`=?,`cli_telefone`=? WHERE `cli_cod`=?";
+            PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
+            st.setString(1, cliente.getNome());
+            st.setString(2, cliente.getRua());
+            st.setString(3, cliente.getBairro());
+            st.setString(4, cliente.getTelefone());
+            st.setInt(5, cliente.getCodigo());
+            
+            st.execute();
+            Conexao.getConnection().commit();// verifica se tudo está salvo correto.
+            JOptionPane.showMessageDialog(null, 
+              "Dados Editados com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//mensagem de erro
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+        
+    }
 }
