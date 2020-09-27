@@ -136,7 +136,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tb_clientes);
 
-        btn_novo.setText("Novo");
+        btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir.png"))); // NOI18N
         btn_novo.setMaximumSize(new java.awt.Dimension(80, 30));
         btn_novo.setMinimumSize(new java.awt.Dimension(80, 30));
         btn_novo.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +145,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_cadastrar.setText("Salvar");
+        btn_cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/salvar.png"))); // NOI18N
         btn_cadastrar.setMaximumSize(new java.awt.Dimension(80, 30));
         btn_cadastrar.setMinimumSize(new java.awt.Dimension(80, 30));
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +245,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -278,6 +278,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         popularClienteBeans();
         clienteController.verificarDados(clienteBeans);// verifica se está tudo preenchido
+        LimparCampos();
+        txt_codigo.setText(clienteController.controleDeCódigo());
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -301,7 +303,15 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         clienteBeans.setTelefone(txt_telefone.getText());
         clienteBeans.setDataCad(txt_data.getText());
     }
-
+    
+    final void LimparCampos(){
+        txt_codigo.setText("");
+        txt_nome.setText("");
+        txt_rua.setText("");
+        txt_bairro.setText("");
+        txt_telefone.setText("");
+        txt_data.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JButton btn_novo;
