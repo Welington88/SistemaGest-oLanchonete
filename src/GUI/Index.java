@@ -7,6 +7,7 @@ package GUI;
 
 import Utilitarios.FundoTela;
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -26,6 +27,10 @@ public class Index extends javax.swing.JFrame {
         setLayout(new GridLayout());//para setar tela no inicio
         tela =  new FundoTela("imagens/fundo_tela.jpg");
         getContentPane().add(tela);//adcionar fundo a tela
+        menuCliente.setIcon(new ImageIcon("imagens/ico_clientes.png"));
+        menuFuncionario.setIcon(new ImageIcon("imagens/ico_func.png"));
+        menuCardapio.setIcon(new ImageIcon("imagens/ico_cardapio.png"));
+        menuEntregador.setIcon(new ImageIcon("imagens/ico_boy.png"));
     }
 
     /**
@@ -52,8 +57,10 @@ public class Index extends javax.swing.JFrame {
         setTitle("Sacras Leopoldina");
 
         jMenu1.setText("Cadastro");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuCliente.setText("Clientes");
+        menuCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuClienteActionPerformed(evt);
@@ -62,6 +69,7 @@ public class Index extends javax.swing.JFrame {
         jMenu1.add(menuCliente);
 
         menuFuncionario.setText("Funcionários");
+        menuFuncionario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFuncionarioActionPerformed(evt);
@@ -70,6 +78,7 @@ public class Index extends javax.swing.JFrame {
         jMenu1.add(menuFuncionario);
 
         menuCardapio.setText("Cardápio");
+        menuCardapio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuCardapio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuCardapioActionPerformed(evt);
@@ -78,6 +87,7 @@ public class Index extends javax.swing.JFrame {
         jMenu1.add(menuCardapio);
 
         menuEntregador.setText("Entregador");
+        menuEntregador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuEntregador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuEntregadorActionPerformed(evt);
@@ -88,6 +98,7 @@ public class Index extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         menuPedidos.setText("Caixa");
+        menuPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenuItem5.setText("Pedidos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -100,9 +111,11 @@ public class Index extends javax.swing.JFrame {
         jMenuBar1.add(menuPedidos);
 
         jMenu3.setText("Relatórios");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Sair");
+        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
