@@ -4,6 +4,7 @@ import Beans.ClienteBeans;
 import DAO.ClienteDAO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -45,5 +46,9 @@ public class ClienteController {
     }
     public String controleDeCódigo () {
         return clienteDAO.proximoCliente();
+    }
+    
+    public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){
+        clienteDAO.buscaCliente(pesquisa, modeloTabela);
     }
 }

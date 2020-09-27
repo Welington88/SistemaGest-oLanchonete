@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -29,6 +30,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
     ClienteBeans clienteBeans;
     ClienteController clienteController;
     CorretorDatas corretorDatas;
+    DefaultTableModel modeloTabela;
     
     public ClienteForm() {
         initComponents();
@@ -39,6 +41,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         txt_data.setText(formatoData.format(dataAtual));
         clienteBeans = new ClienteBeans();
         clienteController = new ClienteController();
+        modeloTabela = (DefaultTableModel) tb_clientes.getModel(); 
+        
     }
 
     /**
@@ -92,6 +96,11 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                 txt_buscarActionPerformed(evt);
             }
         });
+        txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_buscarKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Rua:");
 
@@ -113,10 +122,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
 
         tb_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Rua", "Bairro", "Telefone"
@@ -272,6 +278,12 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         popularClienteBeans();
         clienteController.verificarDados(clienteBeans);// verifica se está tudo preenchido
     }//GEN-LAST:event_btn_cadastrarActionPerformed
+
+    private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
+        // TODO add your handling code here: enquanto estou digitando o texto
+        modeloTabela.setNumRows(0);
+        clienteController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+    }//GEN-LAST:event_txt_buscarKeyReleased
 
     final void habilitarCampos(boolean valor){
         txt_bairro.setEnabled(valor);
