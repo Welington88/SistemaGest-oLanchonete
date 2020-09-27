@@ -7,7 +7,6 @@ package GUI;
 
 import Beans.ClienteBeans;
 import Controller.ClienteController;
-import DAO.ClienteDAO;
 import Utilitarios.CorretorDatas;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,6 +77,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         tb_clientes = new javax.swing.JTable();
         btn_novo = new javax.swing.JButton();
         btn_cadastrar = new javax.swing.JButton();
+        btn_editar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -162,6 +162,15 @@ public class ClienteForm extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/editar.png"))); // NOI18N
+        btn_editar.setMaximumSize(new java.awt.Dimension(80, 30));
+        btn_editar.setMinimumSize(new java.awt.Dimension(80, 30));
+        btn_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,6 +221,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                         .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -256,9 +267,11 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57))))
         );
 
@@ -302,8 +315,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
 
     private void tb_clientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clientesMousePressed
         // TODO add your handling code here:
-        ClienteBeans clienteBeans = new ClienteBeans();
-        ClienteController clienteController = new ClienteController();
+        habilitarCampos(true);
         clienteBeans = clienteController.controlePreencherCampos(
                 Integer.parseInt(modeloTabela.getValueAt( 
                         tb_clientes.getSelectedRow(),0
@@ -317,6 +329,15 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         txt_telefone.setText(clienteBeans.getTelefone());
         txt_data.setText(clienteBeans.getDataCad());
     }//GEN-LAST:event_tb_clientesMousePressed
+
+    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
+        // TODO add your handling code here:
+        popularClienteBeans();
+        clienteController.verificarDadosEditar(clienteBeans);// verifica se está tudo preenchido
+        LimparCampos();
+        txt_buscar.setText("");
+        habilitarCampos(false);        
+    }//GEN-LAST:event_btn_editarActionPerformed
 
     final void habilitarCampos(boolean valor){
         txt_bairro.setEnabled(valor);
@@ -344,6 +365,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar;
+    private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
