@@ -51,4 +51,7 @@ public class ClienteController {
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){
         clienteDAO.buscaCliente(pesquisa, modeloTabela);
     }
+    public ClienteBeans controlePreencherCampos(int codigo){
+        return clienteDAO.preenhcerCampos(codigo);
+    }
 }

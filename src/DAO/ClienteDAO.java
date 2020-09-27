@@ -20,10 +20,8 @@ import javax.swing.table.DefaultTableModel;
  * @author welingtonmarquezini
  */
 public class ClienteDAO {
-    ClienteBeans clienteBeans;
     CorretorDatas corretorDatas = new CorretorDatas();
     public ClienteDAO() {//construtor
-        clienteBeans = new ClienteBeans();
     }
     
     public void cadastroCliente(ClienteBeans cliente){
@@ -84,7 +82,8 @@ public class ClienteDAO {
 
     }
     //-----------------------------------------------------------------------------------------------
-    public void preenhcerCampos(int Codigo){
+    public ClienteBeans preenhcerCampos(int Codigo){
+        ClienteBeans clienteBeans = new ClienteBeans();
         try {
             String SQLSelection = "SELECT * FROM `clientes` WHERE cli_cod=?;";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
@@ -102,5 +101,6 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
                     "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
+        return clienteBeans;
     }
 }
