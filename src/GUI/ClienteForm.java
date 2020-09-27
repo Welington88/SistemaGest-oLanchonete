@@ -36,9 +36,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         initComponents();
         txt_codigo.setEnabled(false);
         habilitarCampos(false);
-        formatoData = new SimpleDateFormat("dd/MM/yyyy");
-        dataAtual = new Date();
-        txt_data.setText(formatoData.format(dataAtual));
+
         clienteBeans = new ClienteBeans();
         clienteController = new ClienteController();
         modeloTabela = (DefaultTableModel) tb_clientes.getModel(); 
@@ -201,7 +199,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71)
                         .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(15, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -271,6 +269,9 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         habilitarCampos(true);
         txt_codigo.setText(clienteController.controleDeCódigo());
+        formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        dataAtual = new Date();
+        txt_data.setText(formatoData.format(dataAtual));
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
@@ -281,7 +282,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here: enquanto estou digitando o texto
-        modeloTabela.setNumRows(0);
+        modeloTabela.setNumRows(0);//posicao
         clienteController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }//GEN-LAST:event_txt_buscarKeyReleased
 
