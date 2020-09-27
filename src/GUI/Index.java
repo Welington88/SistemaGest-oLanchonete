@@ -25,19 +25,19 @@ public class Index extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);//entrar com tela cheia
         setLayout(new GridLayout());//para setar tela no inicio
-        tela =  new FundoTela("imagens/fundo_tela.jpg");
+        tela =  new FundoTela("/Icones/fundo_tela.jpg");
         getContentPane().add(tela);//adcionar fundo a tela
-        menuCliente.setIcon(new ImageIcon("imagens/ico_clientes.png"));
-        menuFuncionario.setIcon(new ImageIcon("imagens/ico_func.png"));
-        menuCardapio.setIcon(new ImageIcon("imagens/ico_cardapio.png"));
-        menuEntregador.setIcon(new ImageIcon("imagens/ico_boy.png"));
+        menuCliente.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_clientes.png")));
+        menuFuncionario.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_func.png")));
+        menuCardapio.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png")));
+        menuEntregador.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_boy.png")));
         
-        menuCadastro.setIcon(new ImageIcon("imagens/inserir-32.png"));
-        menuCaixa.setIcon(new ImageIcon("imagens/ico_caixa.png"));
-        menuRelatorios.setIcon(new ImageIcon("imagens/ico_rel.png"));
-        menuSair.setIcon(new ImageIcon("imagens/ico_sair.png"));
+        menuCadastro.setIcon(new ImageIcon(getClass().getResource("/Icones/inserir-32.png")));
+        menuCaixa.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_caixa.png")));
+        menuRelatorios.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_rel.png")));
+        menuSair.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         //imagem do topo
-        ImageIcon icone = new ImageIcon("imagens/ico_cardapio.png");
+        ImageIcon icone = new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"));
         setIconImage(icone.getImage());
     }
 
