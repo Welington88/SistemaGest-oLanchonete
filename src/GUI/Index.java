@@ -31,6 +31,14 @@ public class Index extends javax.swing.JFrame {
         menuFuncionario.setIcon(new ImageIcon("imagens/ico_func.png"));
         menuCardapio.setIcon(new ImageIcon("imagens/ico_cardapio.png"));
         menuEntregador.setIcon(new ImageIcon("imagens/ico_boy.png"));
+        
+        menuCadastro.setIcon(new ImageIcon("imagens/inserir-32.png"));
+        menuCaixa.setIcon(new ImageIcon("imagens/ico_caixa.png"));
+        menuRelatorios.setIcon(new ImageIcon("imagens/ico_rel.png"));
+        menuSair.setIcon(new ImageIcon("imagens/ico_sair.png"));
+        //imagem do topo
+        ImageIcon icone = new ImageIcon("imagens/ico_cardapio.png");
+        setIconImage(icone.getImage());
     }
 
     /**
@@ -43,21 +51,21 @@ public class Index extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuCadastro = new javax.swing.JMenu();
         menuCliente = new javax.swing.JMenuItem();
         menuFuncionario = new javax.swing.JMenuItem();
         menuCardapio = new javax.swing.JMenuItem();
         menuEntregador = new javax.swing.JMenuItem();
-        menuPedidos = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        menuCaixa = new javax.swing.JMenu();
+        menuPedidos = new javax.swing.JMenuItem();
+        menuRelatorios = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sacras Leopoldina");
 
-        jMenu1.setText("Cadastro");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuCadastro.setText("Cadastro");
+        menuCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuCliente.setText("Clientes");
         menuCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -66,7 +74,7 @@ public class Index extends javax.swing.JFrame {
                 menuClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(menuCliente);
+        menuCadastro.add(menuCliente);
 
         menuFuncionario.setText("Funcionários");
         menuFuncionario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -75,7 +83,7 @@ public class Index extends javax.swing.JFrame {
                 menuFuncionarioActionPerformed(evt);
             }
         });
-        jMenu1.add(menuFuncionario);
+        menuCadastro.add(menuFuncionario);
 
         menuCardapio.setText("Cardápio");
         menuCardapio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -84,7 +92,7 @@ public class Index extends javax.swing.JFrame {
                 menuCardapioActionPerformed(evt);
             }
         });
-        jMenu1.add(menuCardapio);
+        menuCadastro.add(menuCardapio);
 
         menuEntregador.setText("Entregador");
         menuEntregador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -93,30 +101,30 @@ public class Index extends javax.swing.JFrame {
                 menuEntregadorActionPerformed(evt);
             }
         });
-        jMenu1.add(menuEntregador);
+        menuCadastro.add(menuEntregador);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuCadastro);
 
-        menuPedidos.setText("Caixa");
-        menuPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuCaixa.setText("Caixa");
+        menuCaixa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jMenuItem5.setText("Pedidos");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuPedidos.setText("Pedidos");
+        menuPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuPedidosActionPerformed(evt);
             }
         });
-        menuPedidos.add(jMenuItem5);
+        menuCaixa.add(menuPedidos);
 
-        jMenuBar1.add(menuPedidos);
+        jMenuBar1.add(menuCaixa);
 
-        jMenu3.setText("Relatórios");
-        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuBar1.add(jMenu3);
+        menuRelatorios.setText("Relatórios");
+        menuRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuBar1.add(menuRelatorios);
 
-        jMenu4.setText("Sair");
-        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuBar1.add(jMenu4);
+        menuSair.setText("Sair");
+        menuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuBar1.add(menuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -145,9 +153,9 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuFuncionarioActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void menuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_menuPedidosActionPerformed
 
     private void menuEntregadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntregadorActionPerformed
         // TODO add your handling code here:
@@ -193,15 +201,15 @@ public class Index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuCaixa;
     private javax.swing.JMenuItem menuCardapio;
     private javax.swing.JMenuItem menuCliente;
     private javax.swing.JMenuItem menuEntregador;
     private javax.swing.JMenuItem menuFuncionario;
-    private javax.swing.JMenu menuPedidos;
+    private javax.swing.JMenuItem menuPedidos;
+    private javax.swing.JMenu menuRelatorios;
+    private javax.swing.JMenu menuSair;
     // End of variables declaration//GEN-END:variables
 }

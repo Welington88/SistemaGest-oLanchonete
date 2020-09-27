@@ -275,7 +275,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                         .addGap(57, 57, 57))))
         );
 
-        setBounds(0, 0, 500, 600);
+        setBounds(50, 0, 500, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscarActionPerformed
