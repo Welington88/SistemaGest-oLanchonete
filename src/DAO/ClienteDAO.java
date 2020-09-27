@@ -7,11 +7,10 @@ package DAO;
 
 import Beans.ClienteBeans;
 import Utilitarios.Conexao;
+import Utilitarios.CorretorDatas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,9 +20,10 @@ import javax.swing.table.DefaultTableModel;
  * @author welingtonmarquezini
  */
 public class ClienteDAO {
-    
+    ClienteBeans clienteBeans;
+    CorretorDatas corretorDatas = new CorretorDatas();
     public ClienteDAO() {//construtor
-        
+        clienteBeans = new ClienteBeans();
     }
     
     public void cadastroCliente(ClienteBeans cliente){
@@ -82,5 +82,25 @@ public class ClienteDAO {
                     "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
 
+    }
+    //-----------------------------------------------------------------------------------------------
+    public void preenhcerCampos(int Codigo){
+        try {
+            String SQLSelection = "SELECT * FROM `clientes` WHERE cli_cod=?;";
+            PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
+            st.setInt(1, Codigo);//coloco código do cliente e fazer consultar SQL
+            ResultSet Rs = st.executeQuery();
+            if(Rs.next()){//percorre até ultima linha encontrada
+                clienteBeans.setCodigo(Rs.getInt("cli_cod"));
+                clienteBeans.setNome(Rs.getString("cli_nome"));
+                clienteBeans.setRua(Rs.getString("cli_rua"));
+                clienteBeans.setBairro(Rs.getString("cli_bairro"));
+                clienteBeans.setTelefone(Rs.getString("cli_telefone"));
+                clienteBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("cli_data_cad")));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
+                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
     }
 }
