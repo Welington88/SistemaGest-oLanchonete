@@ -134,6 +134,14 @@ public class ClienteForm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tb_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tb_clientesMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_clientesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tb_clientes);
 
         btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir.png"))); // NOI18N
@@ -287,6 +295,28 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         modeloTabela.setNumRows(0);//posicao
         clienteController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }//GEN-LAST:event_txt_buscarKeyReleased
+
+    private void tb_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clientesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_clientesMouseClicked
+
+    private void tb_clientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clientesMousePressed
+        // TODO add your handling code here:
+        ClienteBeans clienteBeans = new ClienteBeans();
+        ClienteController clienteController = new ClienteController();
+        clienteBeans = clienteController.controlePreencherCampos(
+                Integer.parseInt(modeloTabela.getValueAt( 
+                        tb_clientes.getSelectedRow(),0
+                    ).toString()
+                )
+        );//pegar o click e fazer a consulta
+        txt_codigo.setText(clienteBeans.getCodigo() + "");
+        txt_nome.setText(clienteBeans.getNome());
+        txt_rua.setText(clienteBeans.getRua());
+        txt_bairro.setText(clienteBeans.getBairro());
+        txt_telefone.setText(clienteBeans.getTelefone());
+        txt_data.setText(clienteBeans.getDataCad());
+    }//GEN-LAST:event_tb_clientesMousePressed
 
     final void habilitarCampos(boolean valor){
         txt_bairro.setEnabled(valor);
