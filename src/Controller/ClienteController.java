@@ -39,13 +39,13 @@ public class ClienteController {
               "Preencha o campo Telefone", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
-        }else {
+        }else {//caso estiver tudo preenchido
             clienteDAO.cadastroCliente(cliente);
             return true;
         }
     }
     public String controleDeCódigo () {
-        return clienteDAO.proximoCliente();
+        return ClienteDAO.proximoCliente();
     }
     
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){
