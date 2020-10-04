@@ -1,6 +1,5 @@
 package Controller;
 
-import Beans.ClienteBeans;
 import Beans.FuncionarioBeans;
 import DAO.ClienteDAO;
 import DAO.FuncionarioDAO;
