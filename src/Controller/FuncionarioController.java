@@ -36,7 +36,7 @@ public class FuncionarioController {//controla as acoes do do sistema
         }
     }
     public String controleDeCódigo () {
-        return ClienteDAO.proximoCliente();
+        return FuncionarioDAO.proximoFuncionario();
     }
     
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){
