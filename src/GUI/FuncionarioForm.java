@@ -144,7 +144,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Cargo", "Atendente", "Motoboy(Entregadores)", "Caixa", "Chapeiro", "Gerente", "Administrador" }));
+        cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Cargo", "Atendente", "Caixa", "Chapeiro", "Gerente", "Administrador" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -1,7 +1,6 @@
 package Controller;
 
 import Beans.FuncionarioBeans;
-import DAO.ClienteDAO;
 import DAO.FuncionarioDAO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
