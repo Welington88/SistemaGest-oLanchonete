@@ -11,10 +11,22 @@ public class ClienteBeans {//classe model
     private String Telefone;
     private String DataCad;
 
-    public ClienteBeans() {//construtor
+    //construtor
+    public ClienteBeans() {
         
     }
 
+    public ClienteBeans(int Codigo, String Nome, String Rua, String Bairro, 
+            String Telefone, String DataCad) {
+        this.Codigo = Codigo;
+        this.Nome = Nome;
+        this.Rua = Rua;
+        this.Bairro = Bairro;
+        this.Telefone = Telefone;
+        this.DataCad = DataCad;
+    }
+
+    //get and set
     public int getCodigo() {
         return Codigo;
     }
