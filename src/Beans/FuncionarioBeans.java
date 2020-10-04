@@ -7,17 +7,15 @@ public class FuncionarioBeans {
     private int Codigo;
     private String Nome;
     private String Cargo;
-    private String Permissao;
     private String DataCad;
     //construtor
     public FuncionarioBeans() {
     }
     
-    public FuncionarioBeans(int Codigo, String Nome, String Cargo, String Permissao, String DataCad) {
+    public FuncionarioBeans(int Codigo, String Nome, String Cargo, String DataCad) {
         this.Codigo = Codigo;
         this.Nome = Nome;
         this.Cargo = Cargo;
-        this.Permissao = Permissao;
         this.DataCad = DataCad;
     }
     //get and set
@@ -44,15 +42,7 @@ public class FuncionarioBeans {
     public void setCargo(String Cargo) {
         this.Cargo = Cargo;
     }
-
-    public String getPermissao() {
-        return Permissao;
-    }
-
-    public void setPermissao(String Permissao) {
-        this.Permissao = Permissao;
-    }
-
+    
     public String getDataCad() {
         return DataCad;
     }
