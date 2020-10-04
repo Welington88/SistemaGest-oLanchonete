@@ -19,7 +19,7 @@ public class FuncionarioDAO {
     public FuncionarioDAO() {//construtor
     }
     
-    public void cadastroCliente(FuncionarioBeans func){
+    public void cadastroFuncionario(FuncionarioBeans func){
         try {
             String SQLInsertion = 
             "INSERT INTO `funcionarios`(`fun_nome`, `fun_cargo`, `fun_data_cad`) VALUES (?,?,now());";
@@ -54,7 +54,7 @@ public class FuncionarioDAO {
             return "0";
         }
     }
-    public void buscaCliente(String pesquisa, DefaultTableModel modeloTabela) {
+    public void buscaFuncionario(String pesquisa, DefaultTableModel modeloTabela) {
         try {
             String SQLSelection = "SELECT * FROM `funcionarios` WHERE `fun_cod` like '%" + pesquisa + "%';";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
@@ -93,7 +93,7 @@ public class FuncionarioDAO {
         return funcionarioBeans;
     }
     //-----------------------------------------------------------------------------------------------
-    public void editarCliente(FuncionarioBeans funcionario) {
+    public void editarFuncionario(FuncionarioBeans funcionario) {
         
         try {
             String SQLInsertion = 
