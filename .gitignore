@@ -1,1 +1,15 @@
-/dist/
+dist/
+build/
+.gitignore
+build/classes/Controller/ClienteController.class
+build/classes/DAO/ClienteDAO.class
+build/classes/DAO/FuncionarioDAO.class
+build/classes/GUI/FuncionarioForm$1.class
+build/classes/GUI/FuncionarioForm$2.class
+build/classes/GUI/FuncionarioForm$3.class
+build/classes/GUI/FuncionarioForm$4.class
+build/classes/GUI/FuncionarioForm$5.class
+build/classes/GUI/FuncionarioForm$6.class
+build/classes/GUI/FuncionarioForm$7.class
+build/classes/GUI/FuncionarioForm.class
+
