@@ -82,7 +82,7 @@ public class ClienteDAO {
 
     }
     //-----------------------------------------------------------------------------------------------
-    public ClienteBeans preenhcerCampos(int Codigo){
+    public ClienteBeans preencherCampos(int Codigo){
         ClienteBeans clienteBeans = new ClienteBeans();
         try {
             String SQLSelection = "SELECT * FROM `clientes` WHERE cli_cod=?;";

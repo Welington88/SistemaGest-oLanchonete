@@ -52,7 +52,7 @@ public class ClienteController {//controla as acoes do do sistema
         clienteDAO.buscaCliente(pesquisa, modeloTabela);
     }
     public ClienteBeans controlePreencherCampos(int codigo){
-        return clienteDAO.preenhcerCampos(codigo);
+        return clienteDAO.preencherCampos(codigo);
     }
     
     public boolean verificarDadosEditar(ClienteBeans cliente){
