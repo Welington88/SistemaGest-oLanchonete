@@ -1,4 +1,4 @@
-package GUI;
+package GUI;//GUI refere-se a denominação "Graphical User Interface"
 
 import Beans.FuncionarioBeans;
 import Controller.FuncionarioController;
@@ -233,7 +233,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        setBounds(50, 0, 499, 488);
+        setBounds(200, 50, 499, 488);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscarActionPerformed

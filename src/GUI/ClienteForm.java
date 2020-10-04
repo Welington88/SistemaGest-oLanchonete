@@ -1,4 +1,4 @@
-package GUI;
+package GUI;//GUI refere-se a denominação "Graphical User Interface"
 
 import Beans.ClienteBeans;
 import Controller.ClienteController;

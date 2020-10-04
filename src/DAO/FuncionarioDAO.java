@@ -1,4 +1,4 @@
-package DAO;
+package DAO;//Objeto de acesso dados (acrônimo do inglês Data Access Object-DAO
 
 import Beans.FuncionarioBeans;
 import Utilitarios.Conexao;
