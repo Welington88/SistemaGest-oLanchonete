@@ -5,10 +5,11 @@
         <group>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/DAO/ClienteDAO.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/GUI/Index.java</file>
+            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/DAO/FuncionarioDAO.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/GUI/ClienteForm.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Utilitarios/Conexao.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Controller/ClienteController.java</file>
-            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Utilitarios/FundoTela.java</file>
+            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/GUI/FuncionarioForm.java</file>
         </group>
     </open-files>
 </project-private>
