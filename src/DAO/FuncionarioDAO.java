@@ -56,7 +56,7 @@ public class FuncionarioDAO {
     }
     public void buscaFuncionario(String pesquisa, DefaultTableModel modeloTabela) {
         try {
-            String SQLSelection = "SELECT * FROM `funcionarios` WHERE `fun_cod` like '%" + pesquisa + "%';";
+            String SQLSelection = "SELECT * FROM `funcionarios` WHERE `fun_nome` like '%" + pesquisa + "%';";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet Rs = st.executeQuery();
             while(Rs.next()){//percorre até ultima linha encontrada
@@ -97,7 +97,7 @@ public class FuncionarioDAO {
         
         try {
             String SQLInsertion = 
-                "UPDATE `funcionarios` SET ,`fun_nome`=?,`fun_cargo`=? WHERE `fun_cod`=?";
+                "UPDATE `funcionarios` SET `fun_nome`=?,`fun_cargo`=? WHERE `fun_cod`=?";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
             st.setString(1, funcionario.getNome());
             st.setString(2, funcionario.getCargo());
