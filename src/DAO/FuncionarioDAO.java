@@ -94,18 +94,15 @@ public class FuncionarioDAO {
         return funcionarioBeans;
     }
     //-----------------------------------------------------------------------------------------------
-    public void editarCliente(ClienteBeans cliente) {
+    public void editarCliente(FuncionarioBeans funcionario) {
         
         try {
             String SQLInsertion = 
-                "UPDATE `clientes` SET `cli_nome`=?,`cli_rua`=?,`cli_bairro`=?,`cli_telefone`=? WHERE `cli_cod`=?";
+                "UPDATE `funcionarios` SET ,`fun_nome`=?,`fun_cargo`=? WHERE `fun_cod`=?";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
-            st.setString(1, cliente.getNome());
-            st.setString(2, cliente.getRua());
-            st.setString(3, cliente.getBairro());
-            st.setString(4, cliente.getTelefone());
-            st.setInt(5, cliente.getCodigo());
-            
+            st.setString(1, funcionario.getNome());
+            st.setString(2, funcionario.getCargo());
+            st.setInt(3, funcionario.getCodigo());
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
