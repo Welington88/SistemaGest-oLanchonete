@@ -31,7 +31,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
 
         funcionarioBeans = new FuncionarioBeans();
         funcionarioController = new FuncionarioController();
-        modeloTabela = (DefaultTableModel) tb_clientes.getModel(); 
+        modeloTabela = (DefaultTableModel) tb_func.getModel(); 
         
     }
 
@@ -56,7 +56,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         txt_nome = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tb_clientes = new javax.swing.JTable();
+        tb_func = new javax.swing.JTable();
         btn_novo = new javax.swing.JButton();
         btn_cadastrar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
@@ -91,31 +91,31 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Buscar:");
 
-        tb_clientes.setModel(new javax.swing.table.DefaultTableModel(
+        tb_func.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome", "Rua", "Bairro", "Telefone"
+                "Código", "Nome", "Cargo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tb_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tb_func.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tb_clientesMousePressed(evt);
+                tb_funcMousePressed(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_clientesMouseClicked(evt);
+                tb_funcMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tb_clientes);
+        jScrollPane2.setViewportView(tb_func);
 
         btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir.png"))); // NOI18N
         btn_novo.setMaximumSize(new java.awt.Dimension(80, 30));
@@ -263,29 +263,28 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         funcionarioController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }//GEN-LAST:event_txt_buscarKeyReleased
 
-    private void tb_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clientesMouseClicked
+    private void tb_funcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tb_clientesMouseClicked
+    }//GEN-LAST:event_tb_funcMouseClicked
 
-    private void tb_clientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clientesMousePressed
+    private void tb_funcMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcMousePressed
         // TODO add your handling code here: quando da click na tabela
         habilitarCampos(true);
-        /*funcionarioBeans = clienteController.controlePreencherCampos(
+        funcionarioBeans = funcionarioController.controlePreencherCampos(
                 Integer.parseInt(modeloTabela.getValueAt( 
-                        tb_clientes.getSelectedRow(),0
+                        tb_func.getSelectedRow(),0
                     ).toString()
                 )
-        );//pegar o click e fazer a consulta*/
+        );//pegar o click e fazer a consulta
         txt_codigo.setText(funcionarioBeans.getCodigo() + "");
         txt_nome.setText(funcionarioBeans.getNome());
-        
         txt_data.setText(funcionarioBeans.getDataCad());
-    }//GEN-LAST:event_tb_clientesMousePressed
+    }//GEN-LAST:event_tb_funcMousePressed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        //clienteController.verificarDadosEditar(funcionarioBeans);// verifica se está tudo preenchido
+        funcionarioController.verificarDadosEditar(funcionarioBeans);// verifica se está tudo preenchido
         LimparCampos();
         txt_buscar.setText("");
         habilitarCampos(false);        
@@ -322,7 +321,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable tb_clientes;
+    private javax.swing.JTable tb_func;
     private javax.swing.JTextField txt_buscar;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_data;
