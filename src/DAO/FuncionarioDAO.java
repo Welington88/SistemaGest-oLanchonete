@@ -1,6 +1,5 @@
 package DAO;
 
-import Beans.ClienteBeans;
 import Beans.FuncionarioBeans;
 import Utilitarios.Conexao;
 import Utilitarios.CorretorDatas;
@@ -40,7 +39,7 @@ public class FuncionarioDAO {
     }
     
     public static String  proximoCliente(){
-        String SQLSelection = "select * from funcionarios order by fun_cod desc limit 1";
+        String SQLSelection = "select * from `funcionarios` order by `fun_cod` desc limit 1";
         try {
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet Rs = st.executeQuery();
@@ -57,7 +56,7 @@ public class FuncionarioDAO {
     }
     public void buscaCliente(String pesquisa, DefaultTableModel modeloTabela) {
         try {
-            String SQLSelection = "SELECT * FROM funcionarios WHERE fun_cod like '%" + pesquisa + "%';";
+            String SQLSelection = "SELECT * FROM `funcionarios` WHERE `fun_cod` like '%" + pesquisa + "%';";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet Rs = st.executeQuery();
             while(Rs.next()){//percorre até ultima linha encontrada
@@ -77,7 +76,7 @@ public class FuncionarioDAO {
     public FuncionarioBeans preencherCampos(int Codigo){
         FuncionarioBeans funcionarioBeans = new FuncionarioBeans();
         try {
-            String SQLSelection = "SELECT * FROM funcionarios WHERE fun_cod=?;";
+            String SQLSelection = "SELECT * FROM `funcionarios` WHERE `fun_cod`=?;";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             st.setInt(1, Codigo);//coloco código do cliente e fazer consultar SQL
             ResultSet Rs = st.executeQuery();

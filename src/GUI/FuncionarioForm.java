@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import Beans.ClienteBeans;
 import Beans.FuncionarioBeans;
 import Controller.ClienteController;
 import Utilitarios.CorretorDatas;
