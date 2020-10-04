@@ -13,16 +13,25 @@ import javax.swing.JOptionPane;
  * @author welingtonmarquezini
  */
 public class Conexao {
+    //local host
     private final String URL = "jdbc:mysql://localhost:3306/lanchonete";
     private final String Driver = "com.mysql.jdbc.Driver";
     private final String Usuario = "root";
     private final String Senha = "";
     private static Connection Con;
+    
+    //hospedado
+    /*private final String URL = "jdbc:mysql://sql185.main-hosting.eu:3306/u980658351_damata";
+    private final String Driver = "com.mysql.jdbc.Driver";
+    private final String Usuario = "u980658351_root";
+    private final String Senha = "@wel1988";
+    private static Connection Con;*/
+    
     public Conexao() {
         try {
             Con = DriverManager.getConnection(URL, Usuario, Senha);
             Con.setAutoCommit(false);
-            //JOptionPane.showMessageDialog(null,  "Tudo Certo", "Banco", 1);
+            JOptionPane.showMessageDialog(null,  "Conectado com Sucesso....", "Banco", 1);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, 
                     "Erro ao Conectar no Banco de Dados " + e, "Erro", 0);//mensagem de erro
