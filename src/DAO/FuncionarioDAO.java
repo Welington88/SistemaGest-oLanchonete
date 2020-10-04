@@ -74,26 +74,24 @@ public class FuncionarioDAO {
 
     }
     //-----------------------------------------------------------------------------------------------
-    public ClienteBeans preenhcerCampos(int Codigo){
-        ClienteBeans clienteBeans = new ClienteBeans();
+    public FuncionarioBeans preencherCampos(int Codigo){
+        FuncionarioBeans funcionarioBeans = new FuncionarioBeans();
         try {
             String SQLSelection = "SELECT * FROM funcionarios WHERE fun_cod=?;";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             st.setInt(1, Codigo);//coloco código do cliente e fazer consultar SQL
             ResultSet Rs = st.executeQuery();
             if(Rs.next()){//percorre até ultima linha encontrada
-                clienteBeans.setCodigo(Rs.getInt("cli_cod"));
-                clienteBeans.setNome(Rs.getString("cli_nome"));
-                clienteBeans.setRua(Rs.getString("cli_rua"));
-                clienteBeans.setBairro(Rs.getString("cli_bairro"));
-                clienteBeans.setTelefone(Rs.getString("cli_telefone"));
-                clienteBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("cli_data_cad")));
+                funcionarioBeans.setCodigo(Rs.getInt("fun_cod"));
+                funcionarioBeans.setNome(Rs.getString("fun_nome"));
+                funcionarioBeans.setCargo(Rs.getString("fun_Cargo"));
+                funcionarioBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("fun_data_cad")));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
                     "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
-        return clienteBeans;
+        return funcionarioBeans;
     }
     //-----------------------------------------------------------------------------------------------
     public void editarCliente(ClienteBeans cliente) {
