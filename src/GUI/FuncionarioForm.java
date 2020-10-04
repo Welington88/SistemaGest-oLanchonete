@@ -1,7 +1,7 @@
 package GUI;
 
 import Beans.FuncionarioBeans;
-import Controller.ClienteController;
+import Controller.FuncionarioController;
 import Utilitarios.CorretorDatas;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +20,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
     SimpleDateFormat formatoData;
     Date dataAtual;
     FuncionarioBeans funcionarioBeans;
-    ClienteController clienteController;
+    FuncionarioController funcionarioController;
     CorretorDatas corretorDatas;
     DefaultTableModel modeloTabela;
     
@@ -30,7 +30,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         habilitarCampos(false);
 
         funcionarioBeans = new FuncionarioBeans();
-        clienteController = new ClienteController();
+        funcionarioController = new FuncionarioController();
         modeloTabela = (DefaultTableModel) tb_clientes.getModel(); 
         
     }
@@ -243,7 +243,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
         // TODO add your handling code here:
         habilitarCampos(true);
-        txt_codigo.setText(clienteController.controleDeCódigo());
+        txt_codigo.setText(funcionarioController.controleDeCódigo());
         formatoData = new SimpleDateFormat("dd/MM/yyyy");
         dataAtual = new Date();
         txt_data.setText(formatoData.format(dataAtual));
@@ -254,13 +254,13 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         popularClienteBeans();
         //clienteController.verificarDados(funcionarioBeans);// verifica se está tudo preenchido
         LimparCampos();
-        txt_codigo.setText(clienteController.controleDeCódigo());
+        txt_codigo.setText(funcionarioController.controleDeCódigo());
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here: enquanto estou digitando o texto
         modeloTabela.setNumRows(0);//posicao
-        clienteController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+        funcionarioController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void tb_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clientesMouseClicked
