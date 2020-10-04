@@ -293,6 +293,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         formatoData = new SimpleDateFormat("dd/MM/yyyy");
         dataAtual = new Date();
         txt_data.setText(formatoData.format(dataAtual));
+        btn_editar.setEnabled(false);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
@@ -301,12 +302,14 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         clienteController.verificarDados(clienteBeans);// verifica se está tudo preenchido
         LimparCampos();
         txt_codigo.setText(clienteController.controleDeCódigo());
+        btn_cadastrar.setEnabled(false);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here: enquanto estou digitando o texto
         modeloTabela.setNumRows(0);//posicao
         clienteController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+        btn_cadastrar.setEnabled(false);
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void tb_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clientesMouseClicked
@@ -336,7 +339,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         clienteController.verificarDadosEditar(clienteBeans);// verifica se está tudo preenchido
         LimparCampos();
         txt_buscar.setText("");
-        habilitarCampos(false);        
+        habilitarCampos(false);
+        btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_editarActionPerformed
 
     final void habilitarCampos(boolean valor){

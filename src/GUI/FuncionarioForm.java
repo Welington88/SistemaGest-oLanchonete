@@ -247,6 +247,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         formatoData = new SimpleDateFormat("dd/MM/yyyy");
         dataAtual = new Date();
         txt_data.setText(formatoData.format(dataAtual));
+        btn_editar.setEnabled(false);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
@@ -255,6 +256,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         funcionarioController.verificarDados(funcionarioBeans);// verifica se está tudo preenchido
         LimparCampos();
         txt_codigo.setText(funcionarioController.controleDeCódigo());
+        btn_editar.setEnabled(true);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -271,14 +273,13 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here: quando da click na tabela
         habilitarCampos(true);
         funcionarioBeans = funcionarioController.controlePreencherCampos(
-                Integer.parseInt(modeloTabela.getValueAt( 
-                        tb_func.getSelectedRow(),0
-                    ).toString()
-                )
+            Integer.parseInt(modeloTabela.getValueAt(tb_func.getSelectedRow(),0).toString())// linna e coluna 0
         );//pegar o click e fazer a consulta
         txt_codigo.setText(funcionarioBeans.getCodigo() + "");
         txt_nome.setText(funcionarioBeans.getNome());
+        cb_cargo.setSelectedItem(funcionarioBeans.getCargo());
         txt_data.setText(funcionarioBeans.getDataCad());
+        btn_cadastrar.setEnabled(false);
     }//GEN-LAST:event_tb_funcMousePressed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
@@ -287,7 +288,8 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         funcionarioController.verificarDadosEditar(funcionarioBeans);// verifica se está tudo preenchido
         LimparCampos();
         txt_buscar.setText("");
-        habilitarCampos(false);        
+        habilitarCampos(false);
+        btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_editarActionPerformed
 
     final void habilitarCampos(boolean valor){
