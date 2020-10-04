@@ -1,6 +1,6 @@
 package Beans;
 /**
- *
+ * Beans Modelo = Model
  * @author welingtonmarquezini
  */
 public class ClienteBeans {//classe model

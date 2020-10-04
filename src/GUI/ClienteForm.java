@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import Beans.ClienteBeans;
@@ -16,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 /**
- *
+ * View tela de visualicao do usuario
  * @author welingtonmarquezini
  */
 public class ClienteForm extends javax.swing.JInternalFrame {

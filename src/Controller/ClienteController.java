@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Controller  controlar as acoes vinda da view
  * @author welingtonmarquezini
  */
 public class ClienteController {//controla as acoes do do sistema

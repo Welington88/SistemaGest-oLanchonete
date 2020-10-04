@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * DAO classe executar a conexa com BD
  * @author welingtonmarquezini
  */
 public class FuncionarioDAO {
@@ -38,7 +38,7 @@ public class FuncionarioDAO {
                 
     }
     
-    public static String  proximoCliente(){
+    public static String  proximoFuncionario(){
         String SQLSelection = "select * from `funcionarios` order by `fun_cod` desc limit 1";
         try {
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
