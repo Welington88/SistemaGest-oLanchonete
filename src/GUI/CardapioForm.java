@@ -258,9 +258,11 @@ public class CardapioForm extends javax.swing.JInternalFrame {
         popularFuncionarioBeans();
         if(cardapioController.verificarDados(cardapioBeans)){
             LimparCampos();
+            txt_codigo.setText(cardapioController.controleDeCódigo());
+            btn_editar.setEnabled(true);
+            btn_cadastrar.setEnabled(false);
         }// verifica se está tudo preenchido
-        txt_codigo.setText(cardapioController.controleDeCódigo());
-        btn_editar.setEnabled(true);
+        
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -292,10 +294,9 @@ public class CardapioForm extends javax.swing.JInternalFrame {
         popularFuncionarioBeans();
         if(cardapioController.verificarDadosEditar(cardapioBeans)){
             LimparCampos();
+            txt_buscar.setText("");
+            habilitarCampos(false);
         }// verifica se está tudo preenchido
-        txt_buscar.setText("");
-        habilitarCampos(false);
-        btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void txt_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valorActionPerformed

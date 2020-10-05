@@ -238,9 +238,10 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
         popularFuncionarioBeans();
         if(entregadorController.verificarDados(entregadorBeans)){
             LimparCampos();
+            txt_codigo.setText(entregadorController.controleDeCódigo());
+            btn_editar.setEnabled(true);
+            btn_cadastrar.setEnabled(false);
         }// verifica se está tudo preenchido
-        txt_codigo.setText(entregadorController.controleDeCódigo());
-        btn_editar.setEnabled(true);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -271,10 +272,9 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
         popularFuncionarioBeans();
         if(entregadorController.verificarDadosEditar(entregadorBeans)){
             LimparCampos();
+            txt_buscar.setText("");
+            habilitarCampos(false);
         }// verifica se está tudo preenchido
-        txt_buscar.setText("");
-        habilitarCampos(false);
-        btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_editarActionPerformed
 
     final void habilitarCampos(boolean valor){

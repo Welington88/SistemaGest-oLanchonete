@@ -291,10 +291,9 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         popularFuncionarioBeans();
         if(funcionarioController.verificarDadosEditar(funcionarioBeans)){
             LimparCampos();
+            txt_buscar.setText("");
+            habilitarCampos(false);
         };// verifica se está tudo preenchido
-        txt_buscar.setText("");
-        habilitarCampos(false);
-        btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_editarActionPerformed
 
     final void habilitarCampos(boolean valor){
