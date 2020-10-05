@@ -24,11 +24,6 @@ public class EntregadorController {//controla as acoes do do sistema
               "Preencha o campo Nome Entregador", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
-        }else if(ent.getStatus().equals("")) {
-            JOptionPane.showMessageDialog(null, 
-              "Preencha o campo Status", "Erro", 0,
-                new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
-            return false;
         }else {//caso estiver tudo preenchido
             entregadorDAO.cadastroEntregador(ent);
             return true;
@@ -49,11 +44,6 @@ public class EntregadorController {//controla as acoes do do sistema
         if(ent.getNome().equals("")) {
             JOptionPane.showMessageDialog(null, 
               "Preencha o campo Nome Funcionario", "Erro", 0,
-                new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
-            return false;
-        }else if(ent.getStatus().equals("")) {
-            JOptionPane.showMessageDialog(null, 
-              "Preencha o campo Status", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
         }else {//caso estiver tudo preenchido
