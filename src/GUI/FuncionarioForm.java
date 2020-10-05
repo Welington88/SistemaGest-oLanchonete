@@ -248,6 +248,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         dataAtual = new Date();
         txt_data.setText(formatoData.format(dataAtual));
         btn_editar.setEnabled(false);
+        btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
@@ -280,6 +281,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         cb_cargo.setSelectedItem(funcionarioBeans.getCargo());
         txt_data.setText(funcionarioBeans.getDataCad());
         btn_cadastrar.setEnabled(false);
+        btn_editar.setEnabled(true);
     }//GEN-LAST:event_tb_funcMousePressed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed

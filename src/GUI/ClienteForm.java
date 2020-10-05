@@ -294,6 +294,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         dataAtual = new Date();
         txt_data.setText(formatoData.format(dataAtual));
         btn_editar.setEnabled(false);
+        btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
@@ -331,6 +332,8 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         txt_bairro.setText(clienteBeans.getBairro());
         txt_telefone.setText(clienteBeans.getTelefone());
         txt_data.setText(clienteBeans.getDataCad());
+        btn_cadastrar.setEnabled(false);
+        btn_editar.setEnabled(true);
     }//GEN-LAST:event_tb_clientesMousePressed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed

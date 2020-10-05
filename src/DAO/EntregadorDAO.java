@@ -25,7 +25,7 @@ public class EntregadorDAO {
             "INSERT INTO `entregador`(`ent_nome`, `ent_status`, `ent_data_cad`) VALUES (?,?,now());";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
             st.setString(1, ent.getNome());
-            st.setString(2, ent.getStatus());
+            st.setString(2, "Livre");
             
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
@@ -44,7 +44,7 @@ public class EntregadorDAO {
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet Rs = st.executeQuery();
             if (Rs.next()) {//pq ele efetuou a busca
-                return (Integer.parseInt(Rs.getString("fun_cod"))+1) + "";
+                return (Integer.parseInt(Rs.getString("ent_cod"))+1) + "";
             }else{
                 return "1";
             }
