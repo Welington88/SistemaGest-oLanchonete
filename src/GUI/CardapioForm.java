@@ -2,9 +2,6 @@ package GUI;//GUI refere-se a denominação "Graphical User Interface"
 
 import Beans.CardapioBeans;
 import Controller.CardapioController;
-import Utilitarios.CorretorDatas;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
@@ -17,9 +14,6 @@ public class CardapioForm extends javax.swing.JInternalFrame {
      * Creates new form ClienteForm
      */
     MaskFormatter formatoTel;
-    SimpleDateFormat formatoData;
-    Date dataAtual;
-    CorretorDatas corretorDatas;
     DefaultTableModel modeloTabela;
     CardapioBeans cardapioBeans;
     CardapioController cardapioController;
@@ -94,11 +88,11 @@ public class CardapioForm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Cargo"
+                "Código", "Descrição", "Tipo", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -254,9 +248,6 @@ public class CardapioForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         habilitarCampos(true);
         txt_codigo.setText(cardapioController.controleDeCódigo());
-        formatoData = new SimpleDateFormat("dd/MM/yyyy");
-        dataAtual = new Date();
-        txt_valor.setText(formatoData.format(dataAtual));
         btn_editar.setEnabled(false);
         btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_novoActionPerformed
