@@ -58,12 +58,12 @@ public class CardapioController {//controla as acoes do do sistema
             return false;
         }else if(obj.getTipo().equals("Selecione um Item")) {
             JOptionPane.showMessageDialog(null, 
-              "Selecione o uma Cargo no campo Tipo", "Erro", 0,
+              "Selecione o um tipo no campo Tipo", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
         }else if(obj.getValor() <= 0 || obj.getValor() == null) {
             JOptionPane.showMessageDialog(null, 
-              "Selecione o uma Cargo no campo Valor", "Erro", 0,
+              "Preencha o campo Valor com valor acima de 0", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
         }else {//caso estiver tudo preenchido
