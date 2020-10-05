@@ -6,6 +6,7 @@ import Utilitarios.CorretorDatas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -56,6 +57,7 @@ public class ClienteDAO {
             return "0";
         }
     }
+    //-----------------------------------------------------------------------------------------------
     public void buscaCliente(String pesquisa, DefaultTableModel modeloTabela) {
         try {
             String SQLSelection = "SELECT * FROM `clientes` WHERE `cli_nome` like '%" + pesquisa + "%';";
@@ -120,5 +122,24 @@ public class ClienteDAO {
               "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
         
+    }
+    //-----------------------------------------------------------------------------------------------
+    public void buscaCliente(String pesquisa, List<String> lista) {
+        try {
+            String SQLSelection = "SELECT * FROM `clientes` WHERE `cli_nome` like '%" + pesquisa + "%';";
+            PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
+            ResultSet Rs = st.executeQuery();
+            while(Rs.next()){//percorre até ultima linha encontrada
+                lista.add(
+                    Rs.getString("cli_cod") + " - " +
+                    Rs.getString("cli_nome") + " - " +
+                    Rs.getString("cli_telefone")
+                 );
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
+                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+
     }
 }

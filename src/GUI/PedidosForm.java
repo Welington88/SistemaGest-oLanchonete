@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import Beans.ClienteBeans;
+import Controller.ClienteController;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
@@ -17,10 +21,18 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     /**
      * Creates new form PedidosForm
      */
+    
+    ClienteBeans clienteBeans;
+    ClienteController clienteController;
+    List<String> lista;
+    
     MaskFormatter formatoTel;
     public PedidosForm() {
         initComponents();
         habilitarCampos(false);
+        lista = new ArrayList<>();
+        clienteBeans =  new ClienteBeans();
+        clienteController = new ClienteController();
     }
 
     /**
@@ -393,7 +405,13 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
         // TODO add your handling code here:
-        String pesquisa = JOptionPane.showInputDialog(null, "Digite o Nome do Cliente", "Pedidos", 3);
+        cb_Clientes.removeAllItems();//remove todos os itens
+        lista.clear();
+        String pesquisa = JOptionPane.showInputDialog(null, "Digite o Nome do Cliente", "Pedidos", 3);   
+        clienteController.controlePesquisa(pesquisa, lista);
+        for(String i: lista){
+            cb_Clientes.addItem(i);
+        }
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
 

@@ -2,6 +2,7 @@ package Controller;
 
 import Beans.ClienteBeans;
 import DAO.ClienteDAO;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -51,6 +52,11 @@ public class ClienteController {//controla as acoes do do sistema
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){
         clienteDAO.buscaCliente(pesquisa, modeloTabela);
     }
+    //sobrecarga
+    public void controlePesquisa(String pesquisa, List<String> lista){
+        clienteDAO.buscaCliente(pesquisa, lista);
+    }
+    
     public ClienteBeans controlePreencherCampos(int codigo){
         return clienteDAO.preencherCampos(codigo);
     }
