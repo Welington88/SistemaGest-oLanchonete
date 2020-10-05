@@ -1,6 +1,6 @@
 package DAO;//Objeto de acesso dados (acrônimo do inglês Data Access Object-DAO
 
-import Beans.FuncionarioBeans;
+import Beans.EntregadorBeans;
 import Utilitarios.Conexao;
 import Utilitarios.CorretorDatas;
 import java.sql.PreparedStatement;
@@ -14,18 +14,18 @@ import javax.swing.table.DefaultTableModel;
  * DAO classe executar a conexa com BD
  * @author welingtonmarquezini
  */
-public class FuncionarioDAO {
+public class EntregadorDAO {
     CorretorDatas corretorDatas = new CorretorDatas();
-    public FuncionarioDAO() {//construtor
+    public EntregadorDAO() {//construtor
     }
     
-    public void cadastroFuncionario(FuncionarioBeans func){
+    public void cadastroEntregador(EntregadorBeans ent){
         try {
             String SQLInsertion = 
-            "INSERT INTO `funcionarios`(`fun_nome`, `fun_cargo`, `fun_data_cad`) VALUES (?,?,now());";
+            "INSERT INTO `entregador`(`ent_nome`, `ent_status`, `ent_data_cad`) VALUES (?,?,now());";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
-            st.setString(1, func.getNome());
-            st.setString(2, func.getCargo());
+            st.setString(1, ent.getNome());
+            st.setString(2, ent.getStatus());
             
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
@@ -38,8 +38,8 @@ public class FuncionarioDAO {
                 
     }
     
-    public static String  proximoFuncionario(){
-        String SQLSelection = "select * from `funcionarios` order by `fun_cod` desc limit 1";
+    public static String  proximoEntregador(){
+        String SQLSelection = "select * from `entregador` order by `ent_cod` desc limit 1";
         try {
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet Rs = st.executeQuery();
@@ -54,16 +54,16 @@ public class FuncionarioDAO {
             return "0";
         }
     }
-    public void buscaFuncionario(String pesquisa, DefaultTableModel modeloTabela) {
+    public void buscaEntregador(String pesquisa, DefaultTableModel modeloTabela) {
         try {
-            String SQLSelection = "SELECT * FROM `funcionarios` WHERE `fun_nome` like '%" + pesquisa + "%';";
+            String SQLSelection = "SELECT * FROM `entregador` WHERE `ent_nome` like '%" + pesquisa + "%';";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet Rs = st.executeQuery();
             while(Rs.next()){//percorre até ultima linha encontrada
                 modeloTabela.addRow(new Object[]{
-                    Rs.getString("fun_cod"),
-                    Rs.getString("fun_nome"),
-                    Rs.getString("fun_cargo")
+                    Rs.getString("ent_cod"),
+                    Rs.getString("ent_nome"),
+                    Rs.getString("ent_status")
                 });
             }
         } catch (SQLException ex) {
@@ -73,36 +73,36 @@ public class FuncionarioDAO {
 
     }
     //-----------------------------------------------------------------------------------------------
-    public FuncionarioBeans preencherCampos(int Codigo){
-        FuncionarioBeans funcionarioBeans = new FuncionarioBeans();
+    public EntregadorBeans preencherCampos(int Codigo){
+        EntregadorBeans entregadorBeans = new EntregadorBeans();
         try {
-            String SQLSelection = "SELECT * FROM `funcionarios` WHERE `fun_cod`=?;";
+            String SQLSelection = "SELECT * FROM `entregador` WHERE `ent_cod`=?;";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             st.setInt(1, Codigo);//coloco código do cliente e fazer consultar SQL
             ResultSet Rs = st.executeQuery();
             if(Rs.next()){//percorre até ultima linha encontrada
-                funcionarioBeans.setCodigo(Rs.getInt("fun_cod"));
-                funcionarioBeans.setNome(Rs.getString("fun_nome"));
-                funcionarioBeans.setCargo(Rs.getString("fun_Cargo"));
-                funcionarioBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("fun_data_cad")));
+                entregadorBeans.setCodigo(Rs.getInt("ent_cod"));
+                entregadorBeans.setNome(Rs.getString("ent_nome"));
+                entregadorBeans.setStatus(Rs.getString("ent_status"));
+                entregadorBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("ent_data_cad")));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
                     "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
-        return funcionarioBeans;
+        return entregadorBeans;
     }
     //-----------------------------------------------------------------------------------------------
-    public void editarFuncionario(FuncionarioBeans funcionario) {
+    public void editarEntregador(EntregadorBeans ent) {
         
         try {
             String SQLInsertion = 
-                "UPDATE `funcionarios` SET `fun_nome`=?,`fun_cargo`=? WHERE `fun_cod`=?";
+                "UPDATE `entregador` SET `ent_nome`=?,`ent_status`=? WHERE `ent_cod`=?";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
-            st.setString(1, funcionario.getNome());
-            st.setString(2, funcionario.getCargo());
-            st.setInt(3, funcionario.getCodigo());
-            st.execute();
+            st.setString(1, ent.getNome());
+            st.setString(2, ent.getStatus());
+            st.setInt(3, ent.getCodigo());
+            st.execute();   
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
               "Dados Editados com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//mensagem de erro
