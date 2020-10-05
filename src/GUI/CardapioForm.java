@@ -1,7 +1,7 @@
 package GUI;//GUI refere-se a denominação "Graphical User Interface"
 
-import Beans.FuncionarioBeans;
-import Controller.FuncionarioController;
+import Beans.CardapioBeans;
+import Controller.CardapioController;
 import Utilitarios.CorretorDatas;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,18 +19,18 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     MaskFormatter formatoTel;
     SimpleDateFormat formatoData;
     Date dataAtual;
-    FuncionarioBeans funcionarioBeans;
-    FuncionarioController funcionarioController;
     CorretorDatas corretorDatas;
     DefaultTableModel modeloTabela;
+    CardapioBeans cardapioBeans;
+    CardapioController cardapioController;
     
     public CardapioForm() {
         initComponents();
         txt_codigo.setEnabled(false);
         habilitarCampos(false);
 
-        funcionarioBeans = new FuncionarioBeans();
-        funcionarioController = new FuncionarioController();
+        cardapioBeans = new CardapioBeans();
+        cardapioController = new CardapioController();
         modeloTabela = (DefaultTableModel) tabela.getModel(); 
         
     }
@@ -253,7 +253,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
         // TODO add your handling code here:
         habilitarCampos(true);
-        txt_codigo.setText(funcionarioController.controleDeCódigo());
+        txt_codigo.setText(cardapioController.controleDeCódigo());
         formatoData = new SimpleDateFormat("dd/MM/yyyy");
         dataAtual = new Date();
         txt_valor.setText(formatoData.format(dataAtual));
@@ -264,16 +264,16 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        funcionarioController.verificarDados(funcionarioBeans);// verifica se está tudo preenchido
+        cardapioController.verificarDados(cardapioBeans);// verifica se está tudo preenchido
         LimparCampos();
-        txt_codigo.setText(funcionarioController.controleDeCódigo());
+        txt_codigo.setText(cardapioController.controleDeCódigo());
         btn_editar.setEnabled(true);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here: enquanto estou digitando o texto
         modeloTabela.setNumRows(0);//posicao
-        funcionarioController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+        cardapioController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
@@ -283,13 +283,13 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     private void tabelaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMousePressed
         // TODO add your handling code here: quando da click na tabela
         habilitarCampos(true);
-        funcionarioBeans = funcionarioController.controlePreencherCampos(
+        cardapioBeans = cardapioController.controlePreencherCampos(
             Integer.parseInt(modeloTabela.getValueAt(tabela.getSelectedRow(),0).toString())// linna e coluna 0
         );//pegar o click e fazer a consulta
-        txt_codigo.setText(funcionarioBeans.getCodigo() + "");
-        txt_desc.setText(funcionarioBeans.getNome());
-        cb_tipo.setSelectedItem(funcionarioBeans.getCargo());
-        txt_valor.setText(funcionarioBeans.getDataCad());
+        txt_codigo.setText(cardapioBeans.getCodigo() + "");
+        txt_desc.setText(cardapioBeans.getDescricao());
+        cb_tipo.setSelectedItem(cardapioBeans.getTipo());
+        txt_valor.setText(cardapioBeans.getValor().toString()); //converter para dinheiro R$
         btn_cadastrar.setEnabled(false);
         btn_editar.setEnabled(true);
     }//GEN-LAST:event_tabelaMousePressed
@@ -297,7 +297,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        funcionarioController.verificarDadosEditar(funcionarioBeans);// verifica se está tudo preenchido
+        cardapioController.verificarDadosEditar(cardapioBeans);// verifica se está tudo preenchido
         LimparCampos();
         txt_buscar.setText("");
         habilitarCampos(false);
@@ -315,9 +315,9 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     }
     
     final void popularFuncionarioBeans() {//void não retorna nenhum metodo
-        funcionarioBeans.setNome(txt_desc.getText());
-        funcionarioBeans.setDataCad(txt_valor.getText());
-        funcionarioBeans.setCargo(cb_tipo.getSelectedItem().toString());
+        cardapioBeans.setDescricao(txt_desc.getText());
+        cardapioBeans.setTipo(cb_tipo.getSelectedItem().toString());
+        cardapioBeans.setValor(Double.parseDouble(txt_valor.getText()));
     }
     
     final void LimparCampos(){
