@@ -24,12 +24,12 @@ public class CardapioController {//controla as acoes do do sistema
               "Preencha o campo Descrição", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
-        }else if(obj.getTipo().equals("")) {
+        }else if(obj.getTipo().equals("Selecione um Item")) {
             JOptionPane.showMessageDialog(null, 
               "Selecione o uma Cargo no campo Tipo", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
-        }else if(obj.getValor().equals("")) {
+        }else if(obj.getValor() <= 0) {
             JOptionPane.showMessageDialog(null, 
               "Selecione o uma Cargo no campo Valor", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
@@ -56,7 +56,7 @@ public class CardapioController {//controla as acoes do do sistema
               "Preencha o campo Descrição", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
-        }else if(obj.getTipo().equals("")) {
+        }else if(obj.getTipo().equals("Selecione um Item")) {
             JOptionPane.showMessageDialog(null, 
               "Selecione o uma Cargo no campo Tipo", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
