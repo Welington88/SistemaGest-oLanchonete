@@ -12,7 +12,7 @@ import javax.swing.text.MaskFormatter;
  * View tela de visualicao do usuario
  * @author welingtonmarquezini
  */
-public class FuncionarioForm extends javax.swing.JInternalFrame {
+public class CardapioForm extends javax.swing.JInternalFrame {
     /**
      * Creates new form ClienteForm
      */
@@ -24,14 +24,14 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
     CorretorDatas corretorDatas;
     DefaultTableModel modeloTabela;
     
-    public FuncionarioForm() {
+    public CardapioForm() {
         initComponents();
         txt_codigo.setEnabled(false);
         habilitarCampos(false);
 
         funcionarioBeans = new FuncionarioBeans();
         funcionarioController = new FuncionarioController();
-        modeloTabela = (DefaultTableModel) tb_func.getModel(); 
+        modeloTabela = (DefaultTableModel) tabela.getModel(); 
         
     }
 
@@ -50,27 +50,27 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         txt_buscar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txt_data = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        txt_nome = new javax.swing.JTextField();
+        txt_desc = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tb_func = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         btn_novo = new javax.swing.JButton();
         btn_cadastrar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
-        cb_cargo = new javax.swing.JComboBox<>();
+        cb_tipo = new javax.swing.JComboBox<>();
+        txt_valor = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Cadastro Funcionários");
+        setTitle("Cadastro Cardápio");
 
         jLabel1.setText("Código:");
 
         txt_codigo.setEditable(false);
 
-        jLabel2.setText("Nome:");
+        jLabel2.setText("Descrição:");
 
         txt_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,15 +83,13 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setText("Cargo:");
+        jLabel3.setText("Tipo:");
 
-        jLabel6.setText("Data:");
-
-        txt_data.setEditable(false);
+        jLabel6.setText("Valor:");
 
         jLabel7.setText("Buscar:");
 
-        tb_func.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -107,15 +105,15 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tb_func.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tb_funcMousePressed(evt);
+                tabelaMousePressed(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_funcMouseClicked(evt);
+                tabelaMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tb_func);
+        jScrollPane2.setViewportView(tabela);
 
         btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir.png"))); // NOI18N
         btn_novo.setMaximumSize(new java.awt.Dimension(80, 30));
@@ -144,53 +142,64 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Cargo", "Atendente", "Caixa", "Chapeiro", "Gerente", "Administrador" }));
+        cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Item", "Kits", "Hambúrguer", "Hot Dog", "Pizza", "Refrigerante", "Suco", "Outros" }));
+
+        txt_valor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_valorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(475, 475, 475)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(48, 48, 48))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_valor))
+                            .addComponent(txt_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                            .addComponent(txt_desc)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_buscar)
-                    .addComponent(txt_nome))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jSeparator1)
-                .addGap(19, 19, 19))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +210,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,9 +218,9 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
@@ -234,7 +243,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setBounds(200, 50, 499, 488);
+        setBounds(400, 50, 521, 488);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscarActionPerformed
@@ -247,7 +256,7 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         txt_codigo.setText(funcionarioController.controleDeCódigo());
         formatoData = new SimpleDateFormat("dd/MM/yyyy");
         dataAtual = new Date();
-        txt_data.setText(formatoData.format(dataAtual));
+        txt_valor.setText(formatoData.format(dataAtual));
         btn_editar.setEnabled(false);
         btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_novoActionPerformed
@@ -267,23 +276,23 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         funcionarioController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }//GEN-LAST:event_txt_buscarKeyReleased
 
-    private void tb_funcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcMouseClicked
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tb_funcMouseClicked
+    }//GEN-LAST:event_tabelaMouseClicked
 
-    private void tb_funcMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcMousePressed
+    private void tabelaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMousePressed
         // TODO add your handling code here: quando da click na tabela
         habilitarCampos(true);
         funcionarioBeans = funcionarioController.controlePreencherCampos(
-            Integer.parseInt(modeloTabela.getValueAt(tb_func.getSelectedRow(),0).toString())// linna e coluna 0
+            Integer.parseInt(modeloTabela.getValueAt(tabela.getSelectedRow(),0).toString())// linna e coluna 0
         );//pegar o click e fazer a consulta
         txt_codigo.setText(funcionarioBeans.getCodigo() + "");
-        txt_nome.setText(funcionarioBeans.getNome());
-        cb_cargo.setSelectedItem(funcionarioBeans.getCargo());
-        txt_data.setText(funcionarioBeans.getDataCad());
+        txt_desc.setText(funcionarioBeans.getNome());
+        cb_tipo.setSelectedItem(funcionarioBeans.getCargo());
+        txt_valor.setText(funcionarioBeans.getDataCad());
         btn_cadastrar.setEnabled(false);
         btn_editar.setEnabled(true);
-    }//GEN-LAST:event_tb_funcMousePressed
+    }//GEN-LAST:event_tabelaMousePressed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
@@ -295,29 +304,33 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
         btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_editarActionPerformed
 
+    private void txt_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_valorActionPerformed
+
     final void habilitarCampos(boolean valor){
-        txt_nome.setEnabled(valor);
-        txt_data.setEnabled(valor);
-        cb_cargo.setEnabled(valor);
+        txt_desc.setEnabled(valor);
+        txt_valor.setEnabled(valor);
+        cb_tipo.setEnabled(valor);
     }
     
     final void popularFuncionarioBeans() {//void não retorna nenhum metodo
-        funcionarioBeans.setNome(txt_nome.getText());
-        funcionarioBeans.setDataCad(txt_data.getText());
-        funcionarioBeans.setCargo(cb_cargo.getSelectedItem().toString());
+        funcionarioBeans.setNome(txt_desc.getText());
+        funcionarioBeans.setDataCad(txt_valor.getText());
+        funcionarioBeans.setCargo(cb_tipo.getSelectedItem().toString());
     }
     
     final void LimparCampos(){
         txt_codigo.setText("");
-        txt_nome.setText("");
-        txt_data.setText("");
-        cb_cargo.setSelectedIndex(0);//combo box
+        txt_desc.setText("");
+        txt_valor.setText("");
+        cb_tipo.setSelectedIndex(0);//combo box
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_novo;
-    private javax.swing.JComboBox<String> cb_cargo;
+    private javax.swing.JComboBox<String> cb_tipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -326,10 +339,10 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable tb_func;
+    private javax.swing.JTable tabela;
     private javax.swing.JTextField txt_buscar;
     private javax.swing.JTextField txt_codigo;
-    private javax.swing.JTextField txt_data;
-    private javax.swing.JTextField txt_nome;
+    private javax.swing.JTextField txt_desc;
+    private javax.swing.JTextField txt_valor;
     // End of variables declaration//GEN-END:variables
 }
