@@ -63,7 +63,7 @@ public class EntregadorDAO {
                 modeloTabela.addRow(new Object[]{
                     Rs.getString("ent_cod"),
                     Rs.getString("ent_nome"),
-                    Rs.getString("ent_status")
+                    CorretorDatas.ConverterParaJava(Rs.getString("ent_data_cad"))
                 });
             }
         } catch (SQLException ex) {
@@ -83,7 +83,6 @@ public class EntregadorDAO {
             if(Rs.next()){//percorre até ultima linha encontrada
                 entregadorBeans.setCodigo(Rs.getInt("ent_cod"));
                 entregadorBeans.setNome(Rs.getString("ent_nome"));
-                entregadorBeans.setStatus(Rs.getString("ent_status"));
                 entregadorBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("ent_data_cad")));
             }
         } catch (SQLException ex) {
@@ -97,11 +96,10 @@ public class EntregadorDAO {
         
         try {
             String SQLInsertion = 
-                "UPDATE `entregador` SET `ent_nome`=?,`ent_status`=? WHERE `ent_cod`=?";
+                "UPDATE `entregador` SET `ent_nome`=? WHERE `ent_cod`=?";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
             st.setString(1, ent.getNome());
-            st.setString(2, ent.getStatus());
-            st.setInt(3, ent.getCodigo());
+            st.setInt(2, ent.getCodigo());
             st.execute();   
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
