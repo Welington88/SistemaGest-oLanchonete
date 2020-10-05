@@ -138,6 +138,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
 
         cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Item", "Kits", "Hambúrguer", "Hot Dog", "Pizza", "Refrigerante", "Suco", "Outros" }));
 
+        txt_valor.setText("0");
         txt_valor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_valorActionPerformed(evt);
