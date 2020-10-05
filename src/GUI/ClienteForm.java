@@ -300,8 +300,9 @@ public class ClienteForm extends javax.swing.JInternalFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         popularClienteBeans();
-        clienteController.verificarDados(clienteBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(clienteController.verificarDados(clienteBeans)){
+            LimparCampos();
+        }// verifica se está tudo preenchido
         txt_codigo.setText(clienteController.controleDeCódigo());
         btn_cadastrar.setEnabled(false);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
@@ -339,8 +340,9 @@ public class ClienteForm extends javax.swing.JInternalFrame {
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         popularClienteBeans();
-        clienteController.verificarDadosEditar(clienteBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(clienteController.verificarDadosEditar(clienteBeans)){
+            LimparCampos();
+        }// verifica se está tudo preenchido
         txt_buscar.setText("");
         habilitarCampos(false);
         btn_cadastrar.setEnabled(true);

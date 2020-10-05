@@ -187,11 +187,12 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -235,8 +236,9 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        entregadorController.verificarDados(entregadorBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(entregadorController.verificarDados(entregadorBeans)){
+            LimparCampos();
+        }// verifica se está tudo preenchido
         txt_codigo.setText(entregadorController.controleDeCódigo());
         btn_editar.setEnabled(true);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
@@ -267,8 +269,9 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        entregadorController.verificarDadosEditar(entregadorBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(entregadorController.verificarDadosEditar(entregadorBeans)){
+            LimparCampos();
+        }// verifica se está tudo preenchido
         txt_buscar.setText("");
         habilitarCampos(false);
         btn_cadastrar.setEnabled(true);

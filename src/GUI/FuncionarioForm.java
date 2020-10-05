@@ -255,8 +255,9 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        funcionarioController.verificarDados(funcionarioBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(funcionarioController.verificarDados(funcionarioBeans)){
+            LimparCampos();
+        }// verifica se está tudo preenchido
         txt_codigo.setText(funcionarioController.controleDeCódigo());
         btn_editar.setEnabled(true);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
@@ -288,8 +289,9 @@ public class FuncionarioForm extends javax.swing.JInternalFrame {
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        funcionarioController.verificarDadosEditar(funcionarioBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(funcionarioController.verificarDadosEditar(funcionarioBeans)){
+            LimparCampos();
+        };// verifica se está tudo preenchido
         txt_buscar.setText("");
         habilitarCampos(false);
         btn_cadastrar.setEnabled(true);

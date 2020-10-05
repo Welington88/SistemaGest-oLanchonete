@@ -256,8 +256,9 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        cardapioController.verificarDados(cardapioBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(cardapioController.verificarDados(cardapioBeans)){
+            LimparCampos();
+        }// verifica se está tudo preenchido
         txt_codigo.setText(cardapioController.controleDeCódigo());
         btn_editar.setEnabled(true);
     }//GEN-LAST:event_btn_cadastrarActionPerformed
@@ -289,8 +290,9 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         popularFuncionarioBeans();
-        cardapioController.verificarDadosEditar(cardapioBeans);// verifica se está tudo preenchido
-        LimparCampos();
+        if(cardapioController.verificarDadosEditar(cardapioBeans)){
+            LimparCampos();
+        }// verifica se está tudo preenchido
         txt_buscar.setText("");
         habilitarCampos(false);
         btn_cadastrar.setEnabled(true);
