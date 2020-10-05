@@ -26,7 +26,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
         cardapioBeans = new CardapioBeans();
         cardapioController = new CardapioController();
         modeloTabela = (DefaultTableModel) tabela.getModel(); 
-        
+        txt_valor.setText("0.0");
     }
 
     /**
@@ -138,7 +138,6 @@ public class CardapioForm extends javax.swing.JInternalFrame {
 
         cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Item", "Kits", "Hambúrguer", "Hot Dog", "Pizza", "Refrigerante", "Suco", "Outros" }));
 
-        txt_valor.setText("0");
         txt_valor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_valorActionPerformed(evt);
@@ -249,6 +248,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         habilitarCampos(true);
         txt_codigo.setText(cardapioController.controleDeCódigo());
+        txt_valor.setText("0.0");
         btn_editar.setEnabled(false);
         btn_cadastrar.setEnabled(true);
     }//GEN-LAST:event_btn_novoActionPerformed
