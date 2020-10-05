@@ -12,10 +12,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FuncionarioController {//controla as acoes do do sistema
     
-    FuncionarioDAO funcioarioDAO;
+    FuncionarioDAO funcionarioDAO;
 
     public FuncionarioController() {
-        funcioarioDAO = new FuncionarioDAO();
+        funcionarioDAO = new FuncionarioDAO();
     }
     
     public boolean verificarDados(FuncionarioBeans func){
@@ -30,7 +30,7 @@ public class FuncionarioController {//controla as acoes do do sistema
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
         }else {//caso estiver tudo preenchido
-            funcioarioDAO.cadastroFuncionario(func);
+            funcionarioDAO.cadastroFuncionario(func);
             return true;
         }
     }
@@ -39,10 +39,10 @@ public class FuncionarioController {//controla as acoes do do sistema
     }
     
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){
-        funcioarioDAO.buscaFuncionario(pesquisa, modeloTabela);
+        funcionarioDAO.buscaFuncionario(pesquisa, modeloTabela);
     }
     public FuncionarioBeans controlePreencherCampos(int codigo){
-        return funcioarioDAO.preencherCampos(codigo);
+        return funcionarioDAO.preencherCampos(codigo);
     }
     
     public boolean verificarDadosEditar(FuncionarioBeans func){
@@ -57,7 +57,7 @@ public class FuncionarioController {//controla as acoes do do sistema
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
         }else {//caso estiver tudo preenchido
-            funcioarioDAO.editarFuncionario(func);
+            funcionarioDAO.editarFuncionario(func);
             return true;
         }
     }
