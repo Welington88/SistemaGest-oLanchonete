@@ -18,6 +18,7 @@ public class Index extends javax.swing.JFrame {
     FuncionarioForm funcionarioForm;
     CardapioForm cardapioForm;
     EntregadorForm entregadorForm;
+    PedidosForm pedidosForm;
     
     public Index() {
         initComponents();
@@ -156,6 +157,9 @@ public class Index extends javax.swing.JFrame {
 
     private void menuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosActionPerformed
         // TODO add your handling code here:
+        pedidosForm = new PedidosForm();
+        tela.add(pedidosForm);
+        pedidosForm.setVisible(true);
     }//GEN-LAST:event_menuPedidosActionPerformed
 
     private void menuEntregadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntregadorActionPerformed
