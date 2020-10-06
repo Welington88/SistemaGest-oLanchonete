@@ -6,7 +6,9 @@
 package GUI;
 
 import Beans.ClienteBeans;
+import Beans.PedidoBeans;
 import Controller.ClienteController;
+import Controller.PedidoController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFormattedTextField;
@@ -24,15 +26,23 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     
     ClienteBeans clienteBeans;
     ClienteController clienteController;
+    PedidoBeans pedidoBeans;
+    PedidoController pedidoController;
     List<String> lista;
+    List<String> listaDeItens;
     
     MaskFormatter formatoTel;
     public PedidosForm() {
         initComponents();
         habilitarCampos(false);
-        lista = new ArrayList<>();
+        
         clienteBeans =  new ClienteBeans();
         clienteController = new ClienteController();
+        pedidoBeans = new PedidoBeans();
+        pedidoController = new PedidoController();
+        
+        lista = new ArrayList<>();
+        listaDeItens = new ArrayList<>();
         
         painelPai.setEnabledAt(1, false);//segunda tela inativa
     }
@@ -75,7 +85,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_item = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_itens = new javax.swing.JComboBox<>();
         btn_valor = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txt_Valor = new javax.swing.JTextField();
@@ -218,11 +228,12 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         .addGap(7, 7, 7)
                         .addComponent(txt_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6)))
                 .addGap(32, 32, 32)
                 .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_fechar)
@@ -239,6 +250,12 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setText("Item:");
+
+        txt_item.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_itemActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Selecionar:");
 
@@ -332,7 +349,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(cb_itens, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(txt_nome_cliente))))
                 .addGap(288, 288, 288))
             .addGroup(painelPedidosLayout.createSequentialGroup()
@@ -354,7 +371,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7)
                     .addComponent(txt_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_itens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -450,6 +467,15 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         painelPai.setSelectedIndex(1);//ir para a 2 tela
     }//GEN-LAST:event_btn_pedidoActionPerformed
 
+    private void txt_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_itemActionPerformed
+        // TODO add your handling code here:
+        cb_itens.removeAllItems();//remover todos os itens
+        listaDeItens.clear();
+        pedidoController.controleItens(txt_item.getText(), listaDeItens);
+        listaDeItens.forEach((i) -> { //for each
+            cb_itens.addItem(i);
+        });
+    }//GEN-LAST:event_txt_itemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
@@ -462,7 +488,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_retirar;
     private javax.swing.JButton btn_valor;
     private javax.swing.JComboBox<String> cb_Clientes;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cb_itens;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
