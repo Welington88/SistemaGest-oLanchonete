@@ -104,6 +104,12 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             }
         });
 
+        cb_Clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ClientesActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Código:");
 
         txt_codigo.setEditable(false);
@@ -413,6 +419,21 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             cb_Clientes.addItem(i);
         }
     }//GEN-LAST:event_btn_pesquisarActionPerformed
+
+    private void cb_ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ClientesActionPerformed
+        // TODO add your handling code here:
+        if (!(cb_Clientes.getSelectedItem() == null)) {//caso não for nulo
+            String cod = cb_Clientes.getSelectedItem().toString();//codigo do cliente selecionado
+            cod = cod.substring(0, cod.indexOf(" "));
+            clienteBeans = clienteController.controlePreencherCampos(Integer.parseInt(cod));
+            txt_codigo.setText(clienteBeans.getCodigo() + "");
+            txt_nome.setText(clienteBeans.getNome());
+            txt_rua.setText(clienteBeans.getRua());
+            txt_bairro.setText(clienteBeans.getBairro());
+            txt_telefone.setText(clienteBeans.getTelefone());
+            txt_data.setText(clienteBeans.getDataCad());
+        }
+    }//GEN-LAST:event_cb_ClientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
