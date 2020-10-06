@@ -186,7 +186,9 @@
             <Component class="javax.swing.JComboBox" name="cb_Clientes">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="&lt;-- Pesquise um Clinte ao Lado --&gt;"/>
+                  </StringArray>
                 </Property>
               </Properties>
               <Events>
@@ -255,6 +257,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pedido"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_pedidoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_fechar">
               <Properties>

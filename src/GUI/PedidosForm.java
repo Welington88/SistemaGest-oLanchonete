@@ -33,6 +33,8 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         lista = new ArrayList<>();
         clienteBeans =  new ClienteBeans();
         clienteController = new ClienteController();
+        
+        painelPai.setEnabledAt(1, false);//segunda tela inativa
     }
 
     /**
@@ -104,6 +106,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             }
         });
 
+        cb_Clientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-- Pesquise um Clinte ao Lado -->" }));
         cb_Clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_ClientesActionPerformed(evt);
@@ -133,6 +136,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         txt_data.setEditable(false);
 
         btn_pedido.setText("Pedido");
+        btn_pedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pedidoActionPerformed(evt);
+            }
+        });
 
         btn_fechar.setText("Fechar");
 
@@ -412,11 +420,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
         // TODO add your handling code here:
         cb_Clientes.removeAllItems();//remove todos os itens
-        lista.clear();
-        String pesquisa = JOptionPane.showInputDialog(null, "Digite o Nome do Cliente", "Pedidos", 3);   
-        clienteController.controlePesquisa(pesquisa, lista);
-        for(String i: lista){
-            cb_Clientes.addItem(i);
+        lista.clear();//limpar a lista
+        String pesquisa = JOptionPane.showInputDialog(null, "Digite o Nome do Cliente", "Pedidos", 3);//input dos dados 
+        clienteController.controlePesquisa(pesquisa, lista);//fazer pesquisa
+        for(String i: lista){//ir ate o final da lista
+            cb_Clientes.addItem(i);//preencher lista item a item
         }
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
@@ -434,6 +442,13 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             txt_data.setText(clienteBeans.getDataCad());
         }
     }//GEN-LAST:event_cb_ClientesActionPerformed
+
+    private void btn_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidoActionPerformed
+        // TODO add your handling code here:
+        painelPai.setEnabledAt(0, false);//segunda tela inativa
+        painelPai.setEnabledAt(1, true);//segunda tela ativa
+        painelPai.setSelectedIndex(1);//ir para a 2 tela
+    }//GEN-LAST:event_btn_pedidoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

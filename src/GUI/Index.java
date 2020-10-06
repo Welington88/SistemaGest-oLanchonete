@@ -35,6 +35,8 @@ public class Index extends javax.swing.JFrame {
         menuCaixa.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_caixa.png")));
         menuRelatorios.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_rel.png")));
         menuSair.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
+        menuPedidos.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_pedidos.png")));
+        
         //imagem do topo
         ImageIcon icone = new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"));
         setIconImage(icone.getImage());
