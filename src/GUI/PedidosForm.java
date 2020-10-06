@@ -496,6 +496,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private void btn_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_valorActionPerformed
         // TODO add your handling code here:
         txt_Valor.setText(pedidoController.controleDeValor(cb_itens.getSelectedItem().toString()) + "");
+        txt_cod_ped.setText(pedidoController.controleDeCodigo(cb_itens.getSelectedItem().toString()) + "");
         
     }//GEN-LAST:event_btn_valorActionPerformed
 
