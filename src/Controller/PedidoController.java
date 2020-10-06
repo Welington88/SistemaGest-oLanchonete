@@ -17,4 +17,8 @@ public class PedidoController {
     public void controleItens(String pesquisa,List<String> listaItens){
         pedidoDAO.pesquisaItens(pesquisa, listaItens);
     }
+    
+    public double controleDeValor(String pesquisa){
+        return pedidoDAO.valorDoItem(pesquisa);
+    }
 }
