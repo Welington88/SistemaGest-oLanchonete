@@ -42,4 +42,20 @@ public class PedidoDAO {
         }
         return 0;
     }
+    
+    public int valorDoCodigo(String pesquisa){
+        try {
+            String SQLPesquisa = "SELECT * FROM `cardapio` WHERE `car_descricao`=?;";
+            PreparedStatement ps = Conexao.getConnection().prepareStatement(SQLPesquisa);
+            ps.setString(1,pesquisa);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {// se pesquisa encontrou algo
+                return rs.getInt("car_cod");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+              "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+        return 0;
+    }
 }

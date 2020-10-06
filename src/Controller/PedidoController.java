@@ -21,4 +21,8 @@ public class PedidoController {
     public double controleDeValor(String pesquisa){
         return pedidoDAO.valorDoItem(pesquisa);
     }
+    
+    public double controleDeCodigo(String pesquisa){
+        return pedidoDAO.valorDoCodigo(pesquisa);
+    }
 }
