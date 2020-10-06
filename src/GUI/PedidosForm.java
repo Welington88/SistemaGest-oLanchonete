@@ -11,6 +11,7 @@ import Controller.ClienteController;
 import Controller.PedidoController;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
@@ -285,6 +286,13 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Quant.:");
 
+        txt_quant.setText("1");
+        txt_quant.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_quantFocusLost(evt);
+            }
+        });
+
         jLabel11.setText("Código.:");
 
         txt_cod_ped.setEditable(false);
@@ -516,6 +524,24 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         txt_Valor.setText("");
         txt_quant.setText("");
     }//GEN-LAST:event_cb_itensActionPerformed
+
+    private void txt_quantFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_quantFocusLost
+        // TODO add your handling code here: quando ele perder o foco
+        try {
+            int n = Integer.parseInt(txt_Valor.getText());
+            if(n==0){
+                JOptionPane.showMessageDialog(null, 
+                "Preencha um Número maior que zero", "Erro", 0,  
+                new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+                txt_quant.setText("1");
+                txt_quant.requestFocus();//volta para campo quantidade
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, 
+              "Preencha um Número inteiro", "Erro", 0,
+                new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+    }//GEN-LAST:event_txt_quantFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
