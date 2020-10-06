@@ -243,6 +243,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
         painelPai.addTab("Cliente", painelClientes);
 
+        txt_nome_cliente.setEditable(false);
         txt_nome_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nome_clienteActionPerformed(evt);
@@ -256,10 +257,20 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                 txt_itemActionPerformed(evt);
             }
         });
+        txt_item.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_itemKeyReleased(evt);
+            }
+        });
 
         jLabel8.setText("Selecionar:");
 
         cb_itens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar item ao lado" }));
+        cb_itens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_itensActionPerformed(evt);
+            }
+        });
 
         btn_valor.setText("Valor");
         btn_valor.addActionListener(new java.awt.event.ActionListener() {
@@ -270,9 +281,13 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Valor:");
 
+        txt_Valor.setEditable(false);
+
         jLabel10.setText("Quant.:");
 
         jLabel11.setText("Código.:");
+
+        txt_cod_ped.setEditable(false);
 
         jLabel12.setText("Cliente:");
 
@@ -476,12 +491,6 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void txt_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_itemActionPerformed
         // TODO add your handling code here:
-        cb_itens.removeAllItems();//remover todos os itens
-        listaDeItens.clear();
-        pedidoController.controleItens(txt_item.getText(), listaDeItens);
-        listaDeItens.forEach((i) -> { //for each
-            cb_itens.addItem(i);
-        });
     }//GEN-LAST:event_txt_itemActionPerformed
 
     private void btn_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_valorActionPerformed
@@ -489,6 +498,23 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         txt_Valor.setText(pedidoController.controleDeValor(cb_itens.getSelectedItem().toString()) + "");
         
     }//GEN-LAST:event_btn_valorActionPerformed
+
+    private void txt_itemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_itemKeyReleased
+        // TODO add your handling code here:
+        txt_Valor.setText("");//limpar o campo
+        cb_itens.removeAllItems();//remover todos os itens
+        listaDeItens.clear();
+        pedidoController.controleItens(txt_item.getText(), listaDeItens);
+        listaDeItens.forEach((i) -> { //for each
+            cb_itens.addItem(i);
+        });
+    }//GEN-LAST:event_txt_itemKeyReleased
+
+    private void cb_itensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_itensActionPerformed
+        // TODO add your handling code here:
+        txt_Valor.setText("");
+        txt_quant.setText("");
+    }//GEN-LAST:event_cb_itensActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
