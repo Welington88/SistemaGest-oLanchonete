@@ -259,7 +259,14 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Selecionar:");
 
+        cb_itens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar item ao lado" }));
+
         btn_valor.setText("Valor");
+        btn_valor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_valorActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Valor:");
 
@@ -346,10 +353,10 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelPedidosLayout.createSequentialGroup()
                                 .addComponent(txt_item, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cb_itens, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_itens, 0, 1, Short.MAX_VALUE))
                             .addComponent(txt_nome_cliente))))
                 .addGap(288, 288, 288))
             .addGroup(painelPedidosLayout.createSequentialGroup()
@@ -476,6 +483,12 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             cb_itens.addItem(i);
         });
     }//GEN-LAST:event_txt_itemActionPerformed
+
+    private void btn_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_valorActionPerformed
+        // TODO add your handling code here:
+        txt_Valor.setText(pedidoController.controleDeValor(cb_itens.getSelectedItem().toString()) + "");
+        
+    }//GEN-LAST:event_btn_valorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
