@@ -22,7 +22,7 @@ public class PedidoController {
         return pedidoDAO.valorDoItem(pesquisa);
     }
     
-    public double controleDeCodigo(String pesquisa){
+    public int controleDeCodigo(String pesquisa){
         return pedidoDAO.valorDoCodigo(pesquisa);
     }
 }
