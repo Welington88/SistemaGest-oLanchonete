@@ -13,13 +13,12 @@ import javax.swing.JOptionPane;
  * @author welingtonmarquezini
  */
 public class PedidoDAO {
-    
     public void pesquisaItens(String pesquisa, List<String> listaDeItens){
         try {
             String SQLPesquisa = "SELECT * FROM `cardapio` WHERE `car_descricao` Like '%" + pesquisa + "%';";
             PreparedStatement ps = Conexao.getConnection().prepareStatement(pesquisa);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {// percorre ate o final da lista da pesquisa no banco de dados                
                 listaDeItens.add(rs.getString("car_descricao"));
             }
         } catch (SQLException ex) {
