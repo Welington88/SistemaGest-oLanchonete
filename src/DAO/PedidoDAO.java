@@ -4,7 +4,11 @@ import Utilitarios.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -57,5 +61,31 @@ public class PedidoDAO {
               "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
         return 0;
+    }
+    
+    public void CadastrarPedido(String CodigoCliente, 
+                                String CodigoFuncionario,
+                                String Total){
+        try {
+            Date data = new Date();
+            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+            String SQLInsert = 
+            "INSERT INTO `pedidos`(`ped_data`,`ped_hora`,`ped_total`,`ped_cli_cod`,`ped-fun-cod`,`ped-ent-cod`,`ped_status`) VALUES (?,?,?,?,?,?,?);";
+            PreparedStatement st;
+            st = Conexao.getConnection().prepareStatement(SQLInsert);
+            st.setString(1,formatoData.format(data));
+            st.setString(2,formatoHora.format(data));
+            st.setString(3,CodigoCliente);
+            st.setString(4,CodigoFuncionario);
+            st.setString(5,"0");
+            st.setString(6,Total);
+            st.setString(7,"Pedido Aberto");
+            st.execute();
+            Conexao.getConnection().commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
 }
