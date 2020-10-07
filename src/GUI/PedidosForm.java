@@ -647,7 +647,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         double TotalPedido = 0;
         for (int i = 0; i < tabela.getRowCount(); i++) { //percorrer toda tabela
             TotalPedido += Double.parseDouble(modelo.getValueAt(i, 4).toString());
-            txt_total.setText(formatDecimal.format(TotalPedido).replace('.', ','));
+            txt_total.setText(formatDecimal.format(TotalPedido));
         }
     }
     
@@ -658,7 +658,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         pedidoBeans.setData(dateFormat.format(DataAtual));
         pedidoBeans.setHora(hourFormat.format(DataAtual));
         pedidoBeans.setStatus("Pedido Aberto");
-        pedidoBeans.setValor(Double.parseDouble(txt_Valor.getText()));
+        pedidoBeans.setValor(Double.parseDouble(txt_total.getText().replace(',', '.')));
         for (int i = 0; i < tabela.getRowCount(); i++) {
             pedidoBeans.setCodCadapio(Integer.parseInt(modelo.getValueAt(i, 0).toString()));
             pedidoBeans.setQuantidade(Integer.parseInt(modelo.getValueAt(i, 3).toString()));
