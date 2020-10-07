@@ -486,6 +486,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private void btn_retirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retirarActionPerformed
         // TODO add your handling code here:
         modelo.removeRow(tabela.getSelectedRow());
+        calcularTotal();
     }//GEN-LAST:event_btn_retirarActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
@@ -585,6 +586,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         total//converter valores para decimal
                     }
                );
+               calcularTotal();
                limparCampos();
         } 
     }//GEN-LAST:event_btn_adicionarActionPerformed
@@ -596,8 +598,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
         // TODO add your handling code here:
-        double TotalPedido = 0;
-        txt_total.setText(String.valueOf(TotalPedido));
+        calcularTotal();
     }//GEN-LAST:event_btn_calcularActionPerformed
 
     
@@ -614,6 +615,14 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         txt_quant.setText("1");
         txt_Valor.setText("");
         cb_itens.removeAllItems();
+    }
+    
+    final void calcularTotal(){
+        double TotalPedido = 0;
+        for (int i = 0; i < tabela.getRowCount(); i++) { //percorrer toda tabela
+            TotalPedido += Double.parseDouble(modelo.getValueAt(i, 4).toString());
+            txt_total.setText(formatDecimal.format(TotalPedido).replace('.', ','));
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
