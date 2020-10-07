@@ -11,9 +11,9 @@ import Controller.ClienteController;
 import Controller.PedidoController;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -31,6 +31,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     PedidoController pedidoController;
     List<String> lista;
     List<String> listaDeItens;
+    DefaultTableModel modelo;
     
     MaskFormatter formatoTel;
     public PedidosForm() {
@@ -46,6 +47,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         listaDeItens = new ArrayList<>();
         
         painelPai.setEnabledAt(1, false);//segunda tela inativa
+        modelo = (DefaultTableModel)tabela.getModel();
     }
 
     /**
@@ -300,6 +302,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jLabel12.setText("Cliente:");
 
         btn_adicionar.setText("+");
+        btn_adicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adicionarActionPerformed(evt);
+            }
+        });
 
         btn_retirar.setText("-");
         btn_retirar.addActionListener(new java.awt.event.ActionListener() {
@@ -317,11 +324,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Código Item", "Descrição", "Valor Unitário", "Total"
+                "Código Item", "Descrição", "Valor Unitário", "Quant.", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -522,12 +529,12 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private void cb_itensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_itensActionPerformed
         // TODO add your handling code here:
         txt_Valor.setText("");
-        txt_quant.setText("");
+        txt_quant.setText("1");
     }//GEN-LAST:event_cb_itensActionPerformed
 
     private void txt_quantFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_quantFocusLost
         // TODO add your handling code here: quando ele perder o foco
-        try {
+        /*try {
             int n = Integer.parseInt(txt_Valor.getText());
             if(n==0){
                 JOptionPane.showMessageDialog(null, 
@@ -540,9 +547,38 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, 
               "Preencha um Número inteiro", "Erro", 0,
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
-        }
+        }*/
     }//GEN-LAST:event_txt_quantFocusLost
 
+    private void btn_adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adicionarActionPerformed
+        // TODO add your handling code here:
+        if (pedidoController.verificarItens(
+                txt_Valor.getText(), 
+                txt_quant.getText(), 
+                txt_cod_ped.getText(), 
+                cb_itens.getSelectedItem().toString()
+            )){
+               modelo.addRow(new Object[]{
+                        txt_cod_ped.getText(),
+                        cb_itens.getSelectedItem().toString(),
+                        txt_Valor.getText(),
+                        txt_quant.getText(),
+                        txt_total.getText()
+                    }
+               );
+        } 
+    }//GEN-LAST:event_btn_adicionarActionPerformed
+
+    
+    final void habilitarCampos(boolean valor){
+        txt_bairro.setEnabled(valor);
+        txt_rua.setEnabled(valor);
+        txt_nome.setEnabled(valor);
+        txt_telefone.setEnabled(valor);
+        txt_data.setEnabled(valor);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
     private javax.swing.JButton btn_calcular;
@@ -581,17 +617,10 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_item;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_nome_cliente;
-    private javax.swing.JTextField txt_quant;
+    public static javax.swing.JTextField txt_quant;
     private javax.swing.JTextField txt_rua;
     private javax.swing.JTextField txt_telefone;
     private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
     
-    final void habilitarCampos(boolean valor){
-        txt_bairro.setEnabled(valor);
-        txt_rua.setEnabled(valor);
-        txt_nome.setEnabled(valor);
-        txt_telefone.setEnabled(valor);
-        txt_data.setEnabled(valor);
-    }
 }
