@@ -9,10 +9,12 @@ import Beans.ClienteBeans;
 import Beans.PedidoBeans;
 import Controller.ClienteController;
 import Controller.PedidoController;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
@@ -33,7 +35,9 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     List<String> listaDeItens;
     DefaultTableModel modelo;
     
+    DecimalFormat formatDecimal;
     MaskFormatter formatoTel;
+    
     public PedidosForm() {
         initComponents();
         habilitarCampos(false);
@@ -46,6 +50,8 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         lista = new ArrayList<>();
         listaDeItens = new ArrayList<>();
         
+        formatDecimal = new DecimalFormat("0.00");
+        tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         painelPai.setEnabledAt(1, false);//segunda tela inativa
         modelo = (DefaultTableModel)tabela.getModel();
     }
@@ -318,6 +324,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jLabel13.setText("Valor Total:");
 
         btn_calcular.setText("Calcular");
+        btn_calcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_calcularActionPerformed(evt);
+            }
+        });
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -474,6 +485,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void btn_retirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retirarActionPerformed
         // TODO add your handling code here:
+        modelo.removeRow(tabela.getSelectedRow());
     }//GEN-LAST:event_btn_retirarActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
@@ -570,7 +582,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         cb_itens.getSelectedItem().toString(),
                         txt_Valor.getText(),
                         txt_quant.getText(),
-                        total
+                        total//converter valores para decimal
                     }
                );
                limparCampos();
@@ -579,8 +591,14 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void btn_fechar_twoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fechar_twoActionPerformed
         // TODO add your handling code here:
-        
+        dispose();
     }//GEN-LAST:event_btn_fechar_twoActionPerformed
+
+    private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
+        // TODO add your handling code here:
+        double TotalPedido = 0;
+        txt_total.setText(String.valueOf(TotalPedido));
+    }//GEN-LAST:event_btn_calcularActionPerformed
 
     
     final void habilitarCampos(boolean valor){
