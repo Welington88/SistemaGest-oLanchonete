@@ -340,6 +340,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         btn_finalizar.setText("Finalizar");
 
         btn_fechar_two.setText("Fechar");
+        btn_fechar_two.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_fechar_twoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelPedidosLayout = new javax.swing.GroupLayout(painelPedidos);
         painelPedidos.setLayout(painelPedidosLayout);
@@ -568,8 +573,14 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         total
                     }
                );
+               limparCampos();
         } 
     }//GEN-LAST:event_btn_adicionarActionPerformed
+
+    private void btn_fechar_twoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fechar_twoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_fechar_twoActionPerformed
 
     
     final void habilitarCampos(boolean valor){
@@ -580,6 +591,12 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         txt_data.setEnabled(valor);
     }
     
+    final void limparCampos(){
+        txt_item.setText("");
+        txt_quant.setText("1");
+        txt_Valor.setText("");
+        cb_itens.removeAllItems();
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
