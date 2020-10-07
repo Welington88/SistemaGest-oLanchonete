@@ -1,5 +1,6 @@
 package DAO;
 
+import Beans.PedidoBeans;
 import Utilitarios.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,7 +81,7 @@ public class PedidoDAO {
     
     public void CadastrarPedido(String CodigoCliente, 
                                 String CodigoFuncionario,
-                                String Total){
+                                String Total, int TamanhoTabela, PedidoBeans pedidoBeans){
         try {
             Date data = new Date();
             SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
@@ -97,6 +98,8 @@ public class PedidoDAO {
             st.setString(6,"1");
             st.setString(7,"Pedido Aberto");
             st.execute();
+            CadastraItens(CodigoCliente, CodigoFuncionario, codigoDoPedido(), 
+                    TamanhoTabela, pedidoBeans);
             codigoDoPedido();
             Conexao.getConnection().commit();
             JOptionPane.showMessageDialog(null, 
@@ -106,5 +109,27 @@ public class PedidoDAO {
               "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
             
+    }
+    
+    public void CadastraItens(String codigoCliente, String codigoFuncionario, 
+            String codigoPedido, int tamanhoTabela, PedidoBeans pedidoBeans){
+        for (int i = 0; i < tamanhoTabela; i++) {
+            try {
+                String SQLInserir =
+                        "INSERT INTO `item`(`item_ent_cod`, `item_fun_cod`, `item_cli_cod`, `item_ped_cod`, `item_car_cod`, `item_quantidade`) VALUES (?,?,?,?,?,?);";
+                PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInserir);
+                st.setString(1, "1");
+                st.setString(2, codigoFuncionario);
+                st.setString(3, codigoCliente);
+                st.setString(4, codigoPedido);
+                st.setInt(5, pedidoBeans.getCodCadapio(i));
+                st.setInt(6, pedidoBeans.getQuantidade(i));
+                st.execute();
+                
+            } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, 
+                     "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+            }
+        }
     }
 }

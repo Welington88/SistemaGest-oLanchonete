@@ -1,5 +1,6 @@
 package Controller;
 
+import Beans.PedidoBeans;
 import DAO.PedidoDAO;
 import GUI.PedidosForm;
 import java.util.List;
@@ -73,7 +74,7 @@ public class PedidoController {
     //----------------------------------------------------------------------
     public void controleDePedido(String CodigoCliente, 
                                 String CodigoFuncionario,
-                                String Total){
-        pedidoDAO.CadastrarPedido(CodigoCliente, CodigoFuncionario, Total);
+                                String Total,int TamanhoTabela, PedidoBeans pedidoBeans){
+        pedidoDAO.CadastrarPedido(CodigoCliente, CodigoFuncionario, Total,TamanhoTabela,pedidoBeans);
     }
 }

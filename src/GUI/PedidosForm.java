@@ -10,7 +10,9 @@ import Beans.PedidoBeans;
 import Controller.ClienteController;
 import Controller.PedidoController;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -38,6 +40,8 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     DecimalFormat formatDecimal;
     int codigoFuncionario;
     MaskFormatter formatoTel;
+    Date DataAtual;
+    SimpleDateFormat dateFormat,hourFormat;
     
     public PedidosForm() {
         initComponents();
@@ -56,6 +60,10 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         painelPai.setEnabledAt(1, false);//segunda tela inativa
         modelo = (DefaultTableModel)tabela.getModel();
         this.codigoFuncionario=1;
+        
+        DataAtual = new Date();
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        hourFormat = new SimpleDateFormat("HH:mm:ss");
     }
 
     /**
@@ -611,9 +619,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void btn_finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_finalizarActionPerformed
         // TODO add your handling code here:
+        popularBeans();
         pedidoController.controleDePedido(txt_codigo.getText(), 
                 String.valueOf(codigoFuncionario), 
-                txt_total.getText()
+                txt_total.getText(), 
+                tabela.getRowCount(),pedidoBeans
         );
     }//GEN-LAST:event_btn_finalizarActionPerformed
 
@@ -641,6 +651,19 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         }
     }
     
+    final void popularBeans(){
+        pedidoBeans.setCodigoCliente(Integer.parseInt(txt_codigo.getText()));
+        pedidoBeans.setCodigoFuncionario(codigoFuncionario);
+        pedidoBeans.setCodigoEntregador(1);
+        pedidoBeans.setData(dateFormat.format(DataAtual));
+        pedidoBeans.setHora(hourFormat.format(DataAtual));
+        pedidoBeans.setStatus("Pedido Aberto");
+        pedidoBeans.setValor(Double.parseDouble(txt_Valor.getText()));
+        for (int i = 0; i < tabela.getRowCount(); i++) {
+            pedidoBeans.setCodCadapio(Integer.parseInt(modelo.getValueAt(i, 0).toString()));
+            pedidoBeans.setQuantidade(Integer.parseInt(modelo.getValueAt(i, 3).toString()));
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
     private javax.swing.JButton btn_calcular;
