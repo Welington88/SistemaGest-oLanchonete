@@ -110,6 +110,7 @@ public class Index extends javax.swing.JFrame {
         menuCaixa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuPedidos.setText("Pedidos");
+        menuPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuPedidosActionPerformed(evt);

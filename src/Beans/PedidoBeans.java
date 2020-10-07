@@ -1,5 +1,8 @@
 package Beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *Beans Modelo = Model
  * @author welingtonmarquezini
@@ -13,9 +16,13 @@ public class PedidoBeans {
     private String Hora;
     private String Status;
     private Double Valor;
+    private List<Integer>CodCadapio;
+    private List<Integer>Quantidade;
 
     //contrutor
     public PedidoBeans() {
+        CodCadapio = new ArrayList<>();
+        Quantidade = new ArrayList<>();
     }
     //get and set
 
@@ -82,4 +89,22 @@ public class PedidoBeans {
     public void setValor(Double Valor) {
         this.Valor = Valor;
     }
+
+    public Integer getCodCadapio(int posicao) {
+        return CodCadapio.get(posicao);
+    }
+
+    public void setCodCadapio(int CodCardapio) {
+        this.CodCadapio.add(CodCardapio);
+    }
+
+    public Integer getQuantidade(int posicao) {
+        return Quantidade.get(posicao);
+    }
+
+    public void setQuantidade(int Quantidade) {
+        this.Quantidade.add(Quantidade);
+    }
+    
+    
 }
