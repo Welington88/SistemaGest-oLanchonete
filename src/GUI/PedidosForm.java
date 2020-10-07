@@ -36,6 +36,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     DefaultTableModel modelo;
     
     DecimalFormat formatDecimal;
+    int codigoFuncionario;
     MaskFormatter formatoTel;
     
     public PedidosForm() {
@@ -54,6 +55,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         painelPai.setEnabledAt(1, false);//segunda tela inativa
         modelo = (DefaultTableModel)tabela.getModel();
+        this.codigoFuncionario=1;
     }
 
     /**
@@ -525,6 +527,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         painelPai.setEnabledAt(0, false);//segunda tela inativa
         painelPai.setEnabledAt(1, true);//segunda tela ativa
         painelPai.setSelectedIndex(1);//ir para a 2 tela
+        txt_nome_cliente.setText(txt_nome.getText());
     }//GEN-LAST:event_btn_pedidoActionPerformed
 
     private void txt_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_itemActionPerformed
@@ -608,7 +611,10 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void btn_finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_finalizarActionPerformed
         // TODO add your handling code here:
-        
+        pedidoController.controleDePedido(txt_codigo.getText(), 
+                String.valueOf(codigoFuncionario), 
+                txt_total.getText()
+        );
     }//GEN-LAST:event_btn_finalizarActionPerformed
 
     
