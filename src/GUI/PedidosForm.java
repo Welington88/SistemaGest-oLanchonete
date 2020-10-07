@@ -558,12 +558,14 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                 txt_cod_ped.getText(), 
                 cb_itens.getSelectedItem().toString()
             )){
+               double total = Double.parseDouble(txt_Valor.getText()) * 
+                       Integer.parseInt(txt_quant.getText());
                modelo.addRow(new Object[]{
                         txt_cod_ped.getText(),
                         cb_itens.getSelectedItem().toString(),
                         txt_Valor.getText(),
                         txt_quant.getText(),
-                        txt_total.getText()
+                        total
                     }
                );
         } 
