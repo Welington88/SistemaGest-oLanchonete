@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -31,6 +29,23 @@ public class PedidoDAO {
         }
     }
     
+    public String codigoDoPedido(){
+        String Cod = "0";
+        try {
+            String SQLSelection = "SELECT `ped_cod` FROM `pedidos` ORDER BY `ped_cod` desc limit 1";
+            PreparedStatement ps = Conexao.getConnection().prepareStatement(SQLSelection);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                Cod = rs.getString("ped_cod");
+                JOptionPane.showMessageDialog(null, 
+                "Pedido Nº" + Cod, "Pedido", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+              "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+        return Cod;
+    }
     public double valorDoItem(String pesquisa){
         try {
             String SQLPesquisa = "SELECT * FROM `cardapio` WHERE `car_descricao`=?;";
@@ -76,17 +91,19 @@ public class PedidoDAO {
             st = Conexao.getConnection().prepareStatement(SQLInsert);
             st.setString(1,formatoData.format(data));
             st.setString(2,formatoHora.format(data));
-            st.setString(3,CodigoCliente);
-            st.setString(4,CodigoFuncionario);
-            st.setString(5,"0");
-            st.setString(6,Total);
+            st.setString(3,Total.replace(',', '.'));
+            st.setString(4,CodigoCliente);
+            st.setString(5,CodigoFuncionario);
+            st.setString(6,"1");
             st.setString(7,"Pedido Aberto");
             st.execute();
+            codigoDoPedido();
             Conexao.getConnection().commit();
             JOptionPane.showMessageDialog(null, 
               "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
         } catch (SQLException ex) {
-            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, 
+              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
             
     }
