@@ -349,6 +349,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tabela);
 
         btn_finalizar.setText("Finalizar");
+        btn_finalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_finalizarActionPerformed(evt);
+            }
+        });
 
         btn_fechar_two.setText("Fechar");
         btn_fechar_two.addActionListener(new java.awt.event.ActionListener() {
@@ -600,6 +605,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         calcularTotal();
     }//GEN-LAST:event_btn_calcularActionPerformed
+
+    private void btn_finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_finalizarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_finalizarActionPerformed
 
     
     final void habilitarCampos(boolean valor){

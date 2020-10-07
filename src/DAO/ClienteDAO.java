@@ -33,7 +33,7 @@ public class ClienteDAO {
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
-              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//mensagem de erro
+              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
               "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro

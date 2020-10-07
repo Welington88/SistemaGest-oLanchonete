@@ -28,7 +28,7 @@ public class PedidoController {
     public int controleDeCodigo(String pesquisa){
         return pedidoDAO.valorDoCodigo(pesquisa);
     }
-    
+    //----------------------------------------------------------------------
     public boolean verificarItens(String valor, String quant, String codigo, String item){
         
         try {
@@ -69,5 +69,11 @@ public class PedidoController {
             return true;
         }
          
+    }
+    //----------------------------------------------------------------------
+    public void controleDePedido(String CodigoCliente, 
+                                String CodigoFuncionario,
+                                String Total){
+        pedidoDAO.CadastrarPedido(CodigoCliente, CodigoFuncionario, Total);
     }
 }

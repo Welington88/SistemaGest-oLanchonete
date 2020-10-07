@@ -83,6 +83,8 @@ public class PedidoDAO {
             st.setString(7,"Pedido Aberto");
             st.execute();
             Conexao.getConnection().commit();
+            JOptionPane.showMessageDialog(null, 
+              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
         } catch (SQLException ex) {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
