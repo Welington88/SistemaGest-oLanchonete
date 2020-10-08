@@ -536,6 +536,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         painelPai.setEnabledAt(1, true);//segunda tela ativa
         painelPai.setSelectedIndex(1);//ir para a 2 tela
         txt_nome_cliente.setText(txt_nome.getText());
+        btn_finalizar.setEnabled(false);
     }//GEN-LAST:event_btn_pedidoActionPerformed
 
     private void txt_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_itemActionPerformed
@@ -647,8 +648,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         double TotalPedido = 0;
         for (int i = 0; i < tabela.getRowCount(); i++) { //percorrer toda tabela
             TotalPedido += Double.parseDouble(modelo.getValueAt(i, 4).toString());
-            txt_total.setText(formatDecimal.format(TotalPedido));
         }
+        if(TotalPedido>0){
+            btn_finalizar.setEnabled(true);
+        }
+        txt_total.setText(formatDecimal.format(TotalPedido).replace('.', ','));
     }
     
     final void popularBeans(){
