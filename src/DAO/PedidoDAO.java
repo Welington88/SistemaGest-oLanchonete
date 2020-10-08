@@ -38,8 +38,7 @@ public class PedidoDAO {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 Cod = rs.getString("ped_cod");
-                JOptionPane.showMessageDialog(null, 
-                "Pedido Nº" + Cod, "Pedido", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
+                //JOptionPane.showMessageDialog(null,"Pedido Nº" + Cod, "Pedido", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 

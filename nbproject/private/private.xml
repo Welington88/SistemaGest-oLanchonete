@@ -5,6 +5,7 @@
         <group>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Controller/PedidoController.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/DAO/ClienteDAO.java</file>
+            <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/Beans/PedidoBeans.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/DAO/PedidoDAO.java</file>
             <file>file:/Users/welingtonmarquezini/NetBeansProjects/Lanchonete/src/GUI/PedidosForm.java</file>
         </group>
