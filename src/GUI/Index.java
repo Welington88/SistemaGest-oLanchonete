@@ -1,9 +1,18 @@
 package GUI;//GUI refere-se a denominação "Graphical User Interface"
 
+import Utilitarios.Conexao;
 import Utilitarios.FundoTela;
 import java.awt.GridLayout;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * View tela de visualicao do usuario
@@ -19,6 +28,8 @@ public class Index extends javax.swing.JFrame {
     CardapioForm cardapioForm;
     EntregadorForm entregadorForm;
     PedidosForm pedidosForm;
+    
+    Connection conexao = null;
     
     public Index() {
         initComponents();
@@ -40,6 +51,8 @@ public class Index extends javax.swing.JFrame {
         //imagem do topo
         ImageIcon icone = new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"));
         setIconImage(icone.getImage());
+        
+        conexao = Conexao.getConnection();
     }
 
     /**
@@ -60,6 +73,9 @@ public class Index extends javax.swing.JFrame {
         menuCaixa = new javax.swing.JMenu();
         menuPedidos = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
+        menuRelClientes = new javax.swing.JMenuItem();
+        menuRelPedidos = new javax.swing.JMenuItem();
+        menuRelEstoque = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,6 +138,26 @@ public class Index extends javax.swing.JFrame {
 
         menuRelatorios.setText("Relatórios");
         menuRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        menuRelClientes.setText("Clientes");
+        menuRelClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelClientesActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(menuRelClientes);
+
+        menuRelPedidos.setText("Pedidos");
+        menuRelPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelPedidosActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(menuRelPedidos);
+
+        menuRelEstoque.setText("Estoque");
+        menuRelatorios.add(menuRelEstoque);
+
         jMenuBar1.add(menuRelatorios);
 
         menuSair.setText("Sair");
@@ -179,6 +215,26 @@ public class Index extends javax.swing.JFrame {
         cardapioForm.setVisible(true);
     }//GEN-LAST:event_menuCardapioActionPerformed
 
+    private void menuRelPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelPedidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuRelPedidosActionPerformed
+
+    private void menuRelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelClientesActionPerformed
+        try {
+            // TODO add your handling code here:
+            
+            InputStream caminho = 
+                    getClass().getResourceAsStream("/Rel/rel_clientes.jasper");
+            JasperPrint print = JasperFillManager.fillReport(caminho, null, conexao);//relatorio
+            JasperViewer.viewReport(print,false);
+            /*JasperViewer jasperViewer = new JasperViewer(print,false);
+            jasperViewer.setVisible(true);*/
+            
+        } catch (JRException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuRelClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,6 +279,9 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuEntregador;
     private javax.swing.JMenuItem menuFuncionario;
     private javax.swing.JMenuItem menuPedidos;
+    private javax.swing.JMenuItem menuRelClientes;
+    private javax.swing.JMenuItem menuRelEstoque;
+    private javax.swing.JMenuItem menuRelPedidos;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenu menuSair;
     // End of variables declaration//GEN-END:variables
