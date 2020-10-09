@@ -28,14 +28,16 @@ public class TelaPedidoDAO {
     public void MostrarPedidos(DefaultTableModel modelo){
     
          try {
-            String SQLPesquisa = "SELECT * FROM `pedidos` order by `ped_hora` desc;";
+            String SQLPesquisa = "SELECT `ped_cod`,`cli_nome`, `ped_data`, `ped_hora`, `ent_nome` ,`ped_status` FROM ((`pedidos` INNER JOIN `clientes`ON `pedidos`.`ped_cli_cod` = `clientes`.`cli_cod`) INNER JOIN `entregador`ON `pedidos`.`ped-ent-cod`=`entregador`.`ent_cod`) order by `ped_cod` desc;";
             PreparedStatement ps = Conexao.getConnection().prepareStatement(SQLPesquisa);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {// se pesquisa encontrou algo
                 modelo.addRow(new Object[] {
                     rs.getString("ped_cod"),
+                    rs.getString("cli_nome"),
                     CorretorDatas.ConverterParaJava(rs.getString("ped_data")),
                     rs.getString("ped_hora"),
+                    rs.getString("ent_nome"),
                     rs.getString("ped_status")
                 });
             }

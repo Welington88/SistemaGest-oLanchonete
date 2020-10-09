@@ -67,11 +67,11 @@ public class TelaPedidos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código Pedido", "Data Pedido", "Hora Pedido", "Status"
+                "Código Pedido", "Nome Cliente", "Data Pedido", "Hora Pedido", "Entregador", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -184,7 +184,7 @@ public class TelaPedidos extends javax.swing.JFrame {
         // TODO add your handling code here:
         int linha = tabelaPedidos.getSelectedRow();
         txt_n_pedido_tela.setText(tabelaPedidos.getValueAt(linha, 0).toString());//numero do pedido
-        String status = tabelaPedidos.getValueAt(linha, 3).toString();//status do pedido
+        String status = tabelaPedidos.getValueAt(linha, 5).toString();//status do pedido
         cb_status.setSelectedItem(status);
     }//GEN-LAST:event_tabelaPedidosMouseClicked
 
