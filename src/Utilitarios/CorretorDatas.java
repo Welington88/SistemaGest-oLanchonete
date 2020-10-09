@@ -21,5 +21,5 @@ public class CorretorDatas {
         return Data.substring(8,10) + "/" + Data.substring(5,7) + 
                 "/" + Data.substring(0,4) ;
     } 
-    
+
 }

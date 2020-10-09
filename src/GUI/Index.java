@@ -28,7 +28,7 @@ public class Index extends javax.swing.JFrame {
     CardapioForm cardapioForm;
     EntregadorForm entregadorForm;
     PedidosForm pedidosForm;
-    
+    TelaPedidos telaPedidos;
     Connection conexao = null;
     
     public Index() {
@@ -46,7 +46,13 @@ public class Index extends javax.swing.JFrame {
         menuCaixa.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_caixa.png")));
         menuRelatorios.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_rel.png")));
         menuSair.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
+        menuSairFilho.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         menuPedidos.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_pedidos.png")));
+        menuRelClientes.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_clientes.png")));
+        menuRelPedidos.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_pedidos.png")));
+        menuRelEstoque.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_func.png")));
+        menuTelaPedidosTela.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
+        telaPedido.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
         
         //imagem do topo
         ImageIcon icone = new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"));
@@ -76,7 +82,10 @@ public class Index extends javax.swing.JFrame {
         menuRelClientes = new javax.swing.JMenuItem();
         menuRelPedidos = new javax.swing.JMenuItem();
         menuRelEstoque = new javax.swing.JMenuItem();
+        menuTelaPedidosTela = new javax.swing.JMenu();
+        telaPedido = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
+        menuSairFilho = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sacras Leopoldina");
@@ -160,8 +169,29 @@ public class Index extends javax.swing.JFrame {
 
         jMenuBar1.add(menuRelatorios);
 
+        menuTelaPedidosTela.setText("Tela Pedidos");
+
+        telaPedido.setText("Tela");
+        telaPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telaPedidoActionPerformed(evt);
+            }
+        });
+        menuTelaPedidosTela.add(telaPedido);
+
+        jMenuBar1.add(menuTelaPedidosTela);
+
         menuSair.setText("Sair");
         menuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        menuSairFilho.setText("Sair");
+        menuSairFilho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairFilhoActionPerformed(evt);
+            }
+        });
+        menuSair.add(menuSairFilho);
+
         jMenuBar1.add(menuSair);
 
         setJMenuBar(jMenuBar1);
@@ -235,6 +265,18 @@ public class Index extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuRelClientesActionPerformed
 
+    private void telaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telaPedidoActionPerformed
+        // TODO add your handling code here:
+        telaPedidos = new TelaPedidos();
+        
+        telaPedidos.setVisible(true);
+    }//GEN-LAST:event_telaPedidoActionPerformed
+
+    private void menuSairFilhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairFilhoActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_menuSairFilhoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,5 +326,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuRelPedidos;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenu menuSair;
+    private javax.swing.JMenuItem menuSairFilho;
+    private javax.swing.JMenu menuTelaPedidosTela;
+    private javax.swing.JMenuItem telaPedido;
     // End of variables declaration//GEN-END:variables
 }
