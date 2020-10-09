@@ -80,6 +80,7 @@ public class PedidoDAO {
     
     public void CadastrarPedido(String CodigoCliente, 
                                 String CodigoFuncionario,
+                                String CodigoEntregador,
                                 String Total, int TamanhoTabela, PedidoBeans pedidoBeans){
         try {
             Date data = new Date();
@@ -94,7 +95,7 @@ public class PedidoDAO {
             st.setString(3,Total.replace(',', '.'));
             st.setString(4,CodigoCliente);
             st.setString(5,CodigoFuncionario);
-            st.setString(6,"1");
+            st.setString(6,CodigoEntregador);
             st.setString(7,"Pedido Aberto");
             st.execute();
             CadastraItens(CodigoCliente, CodigoFuncionario, codigoDoPedido(), 

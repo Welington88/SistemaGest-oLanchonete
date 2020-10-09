@@ -74,8 +74,10 @@ public class PedidoController {
     //----------------------------------------------------------------------
     public void controleDePedido(String CodigoCliente, 
                                 String CodigoFuncionario,
+                                String CodigoEntregador,
                                 String Total,int TamanhoTabela, PedidoBeans pedidoBeans){
-        pedidoDAO.CadastrarPedido(CodigoCliente, CodigoFuncionario, Total,TamanhoTabela,pedidoBeans);
+        pedidoDAO.CadastrarPedido(CodigoCliente, CodigoFuncionario,
+                CodigoEntregador ,Total,TamanhoTabela,pedidoBeans);
     }
     //----------------------------------------------------------------------
 }

@@ -2,6 +2,7 @@ package Controller;
 
 import Beans.EntregadorBeans;
 import DAO.EntregadorDAO;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -50,5 +51,8 @@ public class EntregadorController {//controla as acoes do do sistema
             entregadorDAO.editarEntregador(ent);
             return true;
         }
+    }
+    public static List<String> controleEntregador(){
+        return EntregadorDAO.buscaEntregador();
     }
 }

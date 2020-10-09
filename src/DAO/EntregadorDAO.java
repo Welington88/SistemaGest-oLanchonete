@@ -6,6 +6,8 @@ import Utilitarios.CorretorDatas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -109,5 +111,27 @@ public class EntregadorDAO {
               "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
         
+    }
+    //-----------------------------------------------------------------------------------------------
+    public static List<String> buscaEntregador() {
+        List<String> lista = new ArrayList<>();
+        try {
+            String SQLSelection = "SELECT * FROM `entregador`;";
+            PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
+            ResultSet Rs = st.executeQuery();
+            System.out.println(Rs);
+            while(Rs.next()){//percorre até ultima linha encontrada
+                lista.add(
+                    Rs.getString("ent_cod") + " - " +
+                    Rs.getString("ent_nome")
+                 );
+            }
+            System.out.println(lista);
+            return lista;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
+                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+        return null;
     }
 }

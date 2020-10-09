@@ -8,6 +8,7 @@ package GUI;
 import Beans.ClienteBeans;
 import Beans.PedidoBeans;
 import Controller.ClienteController;
+import Controller.EntregadorController;
 import Controller.PedidoController;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -33,8 +34,10 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     ClienteController clienteController;
     PedidoBeans pedidoBeans;
     PedidoController pedidoController;
+    EntregadorController entregadorController;
     List<String> lista;
     List<String> listaDeItens;
+    List<String> listaDeEntregadores;
     DefaultTableModel modelo;
     
     DecimalFormat formatDecimal;
@@ -54,6 +57,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         
         lista = new ArrayList<>();
         listaDeItens = new ArrayList<>();
+        listaDeEntregadores = new ArrayList<>();
         
         formatDecimal = new DecimalFormat("0.00");
         tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -122,6 +126,8 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         tabela = new javax.swing.JTable();
         btn_finalizar = new javax.swing.JButton();
         btn_fechar_two = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        cb_entregador = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -221,12 +227,10 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         painelClientesLayout.setVerticalGroup(
             painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelClientesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_pesquisar)
-                    .addGroup(painelClientesLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(cb_Clientes, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)))
+                .addGap(7, 7, 7)
+                .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_pesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,6 +378,15 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel14.setText("Entregador:");
+
+        cb_entregador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<<--Entregador" }));
+        cb_entregador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_entregadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelPedidosLayout = new javax.swing.GroupLayout(painelPedidos);
         painelPedidos.setLayout(painelPedidosLayout);
         painelPedidosLayout.setHorizontalGroup(
@@ -400,14 +413,21 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_quant, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_cod_ped, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelPedidosLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_quant, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_cod_ped, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelPedidosLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_entregador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelPedidosLayout.createSequentialGroup()
                         .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
@@ -457,7 +477,9 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_adicionar)
-                            .addComponent(btn_retirar)))
+                            .addComponent(btn_retirar)
+                            .addComponent(jLabel14)
+                            .addComponent(cb_entregador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel13)
@@ -521,7 +543,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (!(cb_Clientes.getSelectedItem() == null)) {//caso não for nulo
             String cod = cb_Clientes.getSelectedItem().toString();//codigo do cliente selecionado
-            cod = cod.substring(0, cod.indexOf(" "));
+            cod = cod.substring(0, cod.indexOf(" "));//pegar somente o codigo
             clienteBeans = clienteController.controlePreencherCampos(Integer.parseInt(cod));
             txt_codigo.setText(clienteBeans.getCodigo() + "");
             txt_nome.setText(clienteBeans.getNome());
@@ -538,6 +560,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         painelPai.setEnabledAt(1, true);//segunda tela ativa
         painelPai.setSelectedIndex(1);//ir para a 2 tela
         txt_nome_cliente.setText(txt_nome.getText());
+        carregarEntregadores();
         btn_finalizar.setEnabled(false);
     }//GEN-LAST:event_btn_pedidoActionPerformed
 
@@ -628,11 +651,16 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         popularBeans();
         pedidoController.controleDePedido(txt_codigo.getText(), 
                 String.valueOf(codigoFuncionario), 
+                "1",
                 txt_total.getText(), 
                 tabela.getRowCount(),pedidoBeans
         );
         limparFinalizar();
     }//GEN-LAST:event_btn_finalizarActionPerformed
+
+    private void cb_entregadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_entregadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_entregadorActionPerformed
 
     
     final void habilitarCampos(boolean valor){
@@ -664,7 +692,9 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     final void popularBeans(){
         pedidoBeans.setCodigoCliente(Integer.parseInt(txt_codigo.getText()));
         pedidoBeans.setCodigoFuncionario(codigoFuncionario);
-        pedidoBeans.setCodigoEntregador(1);
+        String codEntregador = cb_entregador.getSelectedItem().toString();
+        codEntregador = codEntregador.substring(0, codEntregador.indexOf(" "));
+        pedidoBeans.setCodigoEntregador(Integer.parseInt(codEntregador));
         pedidoBeans.setData(dateFormat.format(DataAtual));
         pedidoBeans.setHora(hourFormat.format(DataAtual));
         pedidoBeans.setStatus("Pedido Aberto");
@@ -681,6 +711,17 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         modelo.setNumRows(0);//volta ela para zero linha a tabela
         
     }
+    final void carregarEntregadores(){
+        cb_entregador.removeAllItems();//remove todos os itens
+        listaDeEntregadores.clear();//limpar a lista
+        listaDeEntregadores = EntregadorController.controleEntregador();
+        listaDeEntregadores.forEach((i) -> {
+            //ir ate o final da lista
+            cb_entregador.addItem(i);//preencher lista item a item
+        });
+        cb_entregador.setSelectedIndex(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
     private javax.swing.JButton btn_calcular;
@@ -692,12 +733,14 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_retirar;
     private javax.swing.JButton btn_valor;
     private javax.swing.JComboBox<String> cb_Clientes;
+    private javax.swing.JComboBox<String> cb_entregador;
     private javax.swing.JComboBox<String> cb_itens;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
