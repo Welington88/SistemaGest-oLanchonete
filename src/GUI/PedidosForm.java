@@ -561,6 +561,9 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         listaDeItens.forEach((i) -> { //for each
             cb_itens.addItem(i);
         });
+        //preencher campo valor
+        txt_Valor.setText(pedidoController.controleDeValor(cb_itens.getSelectedItem().toString()) + "");
+        txt_cod_ped.setText(pedidoController.controleDeCodigo(cb_itens.getSelectedItem().toString()) + "");
     }//GEN-LAST:event_txt_itemKeyReleased
 
     private void cb_itensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_itensActionPerformed
