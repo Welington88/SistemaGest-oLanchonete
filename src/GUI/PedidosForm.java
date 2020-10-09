@@ -359,6 +359,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tabela);
 
         btn_finalizar.setText("Finalizar");
+        btn_finalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_finalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_finalizarActionPerformed(evt);
@@ -366,6 +367,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         });
 
         btn_fechar_two.setText("Fechar");
+        btn_fechar_two.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_fechar_two.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_fechar_twoActionPerformed(evt);
@@ -626,6 +628,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                 txt_total.getText(), 
                 tabela.getRowCount(),pedidoBeans
         );
+        limparFinalizar();
     }//GEN-LAST:event_btn_finalizarActionPerformed
 
     
@@ -667,6 +670,13 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             pedidoBeans.setCodCadapio(Integer.parseInt(modelo.getValueAt(i, 0).toString()));
             pedidoBeans.setQuantidade(Integer.parseInt(modelo.getValueAt(i, 3).toString()));
         }
+    }
+    final void limparFinalizar(){
+        txt_Valor.setText("");
+        txt_cod_ped.setText("");
+        btn_finalizar.setEnabled(false);
+        modelo.setNumRows(0);//volta ela para zero linha a tabela
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
