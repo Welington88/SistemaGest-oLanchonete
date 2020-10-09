@@ -119,14 +119,12 @@ public class EntregadorDAO {
             String SQLSelection = "SELECT * FROM `entregador`;";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet Rs = st.executeQuery();
-            System.out.println(Rs);
             while(Rs.next()){//percorre até ultima linha encontrada
                 lista.add(
                     Rs.getString("ent_cod") + " - " +
                     Rs.getString("ent_nome")
                  );
             }
-            System.out.println(lista);
             return lista;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,

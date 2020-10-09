@@ -649,9 +649,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private void btn_finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_finalizarActionPerformed
         // TODO add your handling code here:
         popularBeans();
+        String codEntregador = cb_entregador.getSelectedItem().toString();
+        codEntregador = codEntregador.substring(0, codEntregador.indexOf(" "));
         pedidoController.controleDePedido(txt_codigo.getText(), 
                 String.valueOf(codigoFuncionario), 
-                "1",
+                codEntregador,
                 txt_total.getText(), 
                 tabela.getRowCount(),pedidoBeans
         );
