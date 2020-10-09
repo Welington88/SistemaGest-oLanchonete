@@ -46,6 +46,7 @@ public class TelaPedidos extends javax.swing.JFrame {
         btn_atualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaPedidos = new javax.swing.JTable();
+        btn_sair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,28 +77,39 @@ public class TelaPedidos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaPedidos);
 
+        btn_sair.setText("Sair");
+        btn_sair.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        btn_sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelTelaPedidosLayout = new javax.swing.GroupLayout(painelTelaPedidos);
         painelTelaPedidos.setLayout(painelTelaPedidosLayout);
         painelTelaPedidosLayout.setHorizontalGroup(
             painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTelaPedidosLayout.createSequentialGroup()
-                .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelTelaPedidosLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE))
-                    .addGroup(painelTelaPedidosLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_atualizar)))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTelaPedidosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_atualizar)
+                .addGap(18, 18, 18)
+                .addComponent(btn_sair)
+                .addGap(35, 35, 35))
         );
         painelTelaPedidosLayout.setVerticalGroup(
             painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_atualizar)
-                .addGap(5, 5, 5)
+                .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_atualizar)
+                    .addComponent(btn_sair))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,6 +136,11 @@ public class TelaPedidos extends javax.swing.JFrame {
         modelo.setNumRows(0);//limpar a tabela
         telaPedidosController.controlePesquisa(modelo);
     }//GEN-LAST:event_btn_atualizarActionPerformed
+
+    private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_sairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +179,7 @@ public class TelaPedidos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_atualizar;
+    private javax.swing.JButton btn_sair;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel painelTelaPedidos;
     private javax.swing.JTable tabelaPedidos;
