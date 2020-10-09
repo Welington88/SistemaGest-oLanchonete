@@ -6,6 +6,8 @@
 package Controller;
 
 import DAO.TelaPedidoDAO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,5 +23,15 @@ public class TelaPedidosController {
     
     public void controlePesquisa(DefaultTableModel modelo) {
         telaPedidoDAO.MostrarPedidos(modelo);
+    }
+    
+    public void alterarPedido(String statusPedidos, int codigoCliente){
+        if (codigoCliente <= 0) {
+            JOptionPane.showMessageDialog(null, 
+              "Preencha o campo Nº pedido selecione um pedido", "Erro", 0,
+                new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        } else {
+            telaPedidoDAO.alterarPedido(statusPedidos,codigoCliente);
+        }
     }
 }

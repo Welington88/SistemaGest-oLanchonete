@@ -77,4 +77,5 @@ public class PedidoController {
                                 String Total,int TamanhoTabela, PedidoBeans pedidoBeans){
         pedidoDAO.CadastrarPedido(CodigoCliente, CodigoFuncionario, Total,TamanhoTabela,pedidoBeans);
     }
+    //----------------------------------------------------------------------
 }

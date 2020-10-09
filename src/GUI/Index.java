@@ -49,7 +49,6 @@ public class Index extends javax.swing.JFrame {
         menuSairFilho.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         menuPedidos.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_pedidos.png")));
         menuRelClientes.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_clientes.png")));
-        menuRelPedidos.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_pedidos.png")));
         menuRelEstoque.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_func.png")));
         menuTelaPedidosTela.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
         telaPedido.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
@@ -80,7 +79,6 @@ public class Index extends javax.swing.JFrame {
         menuPedidos = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuRelClientes = new javax.swing.JMenuItem();
-        menuRelPedidos = new javax.swing.JMenuItem();
         menuRelEstoque = new javax.swing.JMenuItem();
         menuTelaPedidosTela = new javax.swing.JMenu();
         telaPedido = new javax.swing.JMenuItem();
@@ -155,14 +153,6 @@ public class Index extends javax.swing.JFrame {
             }
         });
         menuRelatorios.add(menuRelClientes);
-
-        menuRelPedidos.setText("Pedidos");
-        menuRelPedidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRelPedidosActionPerformed(evt);
-            }
-        });
-        menuRelatorios.add(menuRelPedidos);
 
         menuRelEstoque.setText("Estoque");
         menuRelatorios.add(menuRelEstoque);
@@ -245,10 +235,6 @@ public class Index extends javax.swing.JFrame {
         cardapioForm.setVisible(true);
     }//GEN-LAST:event_menuCardapioActionPerformed
 
-    private void menuRelPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelPedidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuRelPedidosActionPerformed
-
     private void menuRelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelClientesActionPerformed
         try {
             // TODO add your handling code here:
@@ -323,7 +309,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuPedidos;
     private javax.swing.JMenuItem menuRelClientes;
     private javax.swing.JMenuItem menuRelEstoque;
-    private javax.swing.JMenuItem menuRelPedidos;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenu menuSair;
     private javax.swing.JMenuItem menuSairFilho;
