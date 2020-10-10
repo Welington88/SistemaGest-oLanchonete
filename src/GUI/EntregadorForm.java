@@ -167,7 +167,7 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -175,7 +175,7 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_buscar))
                                 .addGap(6, 6, 6)))
                         .addGap(31, 31, 31))))
         );
@@ -241,13 +241,13 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
             txt_codigo.setText(entregadorController.controleDeCódigo());
             btn_editar.setEnabled(true);
             btn_cadastrar.setEnabled(false);
+            atualizarTabela();
         }// verifica se está tudo preenchido
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here: enquanto estou digitando o texto
-        modeloTabela.setNumRows(0);//posicao
-        entregadorController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+        atualizarTabela();
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void tb_entregadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_entregadorMouseClicked
@@ -274,6 +274,7 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
             LimparCampos();
             txt_buscar.setText("");
             habilitarCampos(false);
+            atualizarTabela();
         }// verifica se está tudo preenchido
     }//GEN-LAST:event_btn_editarActionPerformed
 
@@ -292,6 +293,10 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
         txt_nome.setText("");
         txt_data.setText("");
     }
+    final void atualizarTabela() {
+        modeloTabela.setNumRows(0);//posicao
+        entregadorController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JButton btn_editar;
@@ -309,4 +314,5 @@ public class EntregadorForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_data;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
+
 }

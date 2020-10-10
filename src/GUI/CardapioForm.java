@@ -261,14 +261,14 @@ public class CardapioForm extends javax.swing.JInternalFrame {
             txt_codigo.setText(cardapioController.controleDeCódigo());
             btn_editar.setEnabled(true);
             btn_cadastrar.setEnabled(false);
+            atualizarTabela();
         }// verifica se está tudo preenchido
         
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here: enquanto estou digitando o texto
-        modeloTabela.setNumRows(0);//posicao
-        cardapioController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+        atualizarTabela();
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
@@ -284,7 +284,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
         txt_codigo.setText(cardapioBeans.getCodigo() + "");
         txt_desc.setText(cardapioBeans.getDescricao());
         cb_tipo.setSelectedItem(cardapioBeans.getTipo());
-        txt_valor.setText(cardapioBeans.getValor().toString()); //converter para dinheiro R$
+        txt_valor.setText(cardapioBeans.getValor().toString().replace('.', ',')); //converter para dinheiro R$
         btn_cadastrar.setEnabled(false);
         btn_editar.setEnabled(true);
     }//GEN-LAST:event_tabelaMousePressed
@@ -296,6 +296,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
             LimparCampos();
             txt_buscar.setText("");
             habilitarCampos(false);
+            atualizarTabela();
         }// verifica se está tudo preenchido
     }//GEN-LAST:event_btn_editarActionPerformed
 
@@ -312,7 +313,7 @@ public class CardapioForm extends javax.swing.JInternalFrame {
     final void popularFuncionarioBeans() {//void não retorna nenhum metodo
         cardapioBeans.setDescricao(txt_desc.getText());
         cardapioBeans.setTipo(cb_tipo.getSelectedItem().toString());
-        cardapioBeans.setValor(Double.parseDouble(txt_valor.getText()));
+        cardapioBeans.setValor(Double.parseDouble(txt_valor.getText().replace(',', '.')));
     }
     
     final void LimparCampos(){
@@ -320,6 +321,10 @@ public class CardapioForm extends javax.swing.JInternalFrame {
         txt_desc.setText("");
         txt_valor.setText("");
         cb_tipo.setSelectedIndex(0);//combo box
+    }
+    final void atualizarTabela(){
+        modeloTabela.setNumRows(0);//posicao
+        cardapioController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar;

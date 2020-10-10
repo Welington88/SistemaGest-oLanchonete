@@ -305,13 +305,13 @@ public class ClienteForm extends javax.swing.JInternalFrame {
             txt_codigo.setText(clienteController.controleDeCódigo());
             btn_cadastrar.setEnabled(false);
             btn_editar.setEnabled(true);
+            atualizarTabela();
         }// verifica se está tudo preenchido
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here: enquanto estou digitando o texto
-        modeloTabela.setNumRows(0);//posicao
-        clienteController.controlePesquisa(txt_buscar.getText(), modeloTabela);
+        atualizarTabela();
         btn_cadastrar.setEnabled(false);
     }//GEN-LAST:event_txt_buscarKeyReleased
 
@@ -345,6 +345,7 @@ public class ClienteForm extends javax.swing.JInternalFrame {
             LimparCampos();
             txt_buscar.setText("");
             habilitarCampos(false);
+            atualizarTabela();
         }// verifica se está tudo preenchido
     }//GEN-LAST:event_btn_editarActionPerformed
 
@@ -371,6 +372,10 @@ public class ClienteForm extends javax.swing.JInternalFrame {
         txt_bairro.setText("");
         txt_telefone.setText("");
         txt_data.setText("");
+    }
+    final void atualizarTabela(){
+        modeloTabela.setNumRows(0);//posicao
+        clienteController.controlePesquisa(txt_buscar.getText(), modeloTabela);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar;

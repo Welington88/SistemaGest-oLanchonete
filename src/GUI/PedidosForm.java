@@ -289,6 +289,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jLabel8.setText("Selecionar:");
 
         cb_itens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar item ao lado" }));
+        cb_itens.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cb_itensFocusLost(evt);
+            }
+        });
         cb_itens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_itensActionPerformed(evt);
@@ -570,9 +575,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void btn_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_valorActionPerformed
         // TODO add your handling code here:
-        txt_Valor.setText(pedidoController.controleDeValor(cb_itens.getSelectedItem().toString()) + "");
-        txt_cod_ped.setText(pedidoController.controleDeCodigo(cb_itens.getSelectedItem().toString()) + "");
-        
+        preencherValor();
     }//GEN-LAST:event_btn_valorActionPerformed
 
     private void txt_itemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_itemKeyReleased
@@ -584,9 +587,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         listaDeItens.forEach((i) -> { //for each
             cb_itens.addItem(i);
         });
-        //preencher campo valor
-        txt_Valor.setText(pedidoController.controleDeValor(cb_itens.getSelectedItem().toString()) + "");
-        txt_cod_ped.setText(pedidoController.controleDeCodigo(cb_itens.getSelectedItem().toString()) + "");
+        preencherValor();
     }//GEN-LAST:event_txt_itemKeyReleased
 
     private void cb_itensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_itensActionPerformed
@@ -664,7 +665,10 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_entregadorActionPerformed
 
-    
+    private void cb_itensFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_itensFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_itensFocusLost
+
     final void habilitarCampos(boolean valor){
         txt_bairro.setEnabled(valor);
         txt_rua.setEnabled(valor);
@@ -711,7 +715,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         txt_cod_ped.setText("");
         btn_finalizar.setEnabled(false);
         modelo.setNumRows(0);//volta ela para zero linha a tabela
-        
+        txt_total.setText("");
     }
     final void carregarEntregadores(){
         cb_entregador.removeAllItems();//remove todos os itens
@@ -723,7 +727,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         });
         cb_entregador.setSelectedIndex(0);
     }
-    
+    final void preencherValor(){
+    //preencher campo valor
+        txt_Valor.setText(pedidoController.controleDeValor(cb_itens.getSelectedItem().toString()) + "");
+        txt_cod_ped.setText(pedidoController.controleDeCodigo(cb_itens.getSelectedItem().toString()) + "");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
     private javax.swing.JButton btn_calcular;
