@@ -46,7 +46,7 @@ public class ClienteController {//controla as acoes do do sistema
         }
     }
     public String controleDeCódigo () {
-        return ClienteDAO.proximoCliente();
+        return clienteDAO.proximoCliente();
     }
     
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){

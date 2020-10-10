@@ -43,7 +43,7 @@ public class TelaPedidoDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao consultar Banco de Dados", "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
     }
     
@@ -60,7 +60,7 @@ public class TelaPedidoDAO {
             Conexao.getConnection().commit();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
             
     }

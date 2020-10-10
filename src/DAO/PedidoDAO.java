@@ -26,7 +26,7 @@ public class PedidoDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao consultar Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
     }
     
@@ -42,7 +42,7 @@ public class PedidoDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao consultar Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
         return Cod;
     }
@@ -57,7 +57,7 @@ public class PedidoDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao consultar Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
         return 0;
     }
@@ -73,7 +73,7 @@ public class PedidoDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao consultar Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao consultar Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
         return 0;
     }
@@ -103,10 +103,10 @@ public class PedidoDAO {
             codigoDoPedido();
             Conexao.getConnection().commit();
             JOptionPane.showMessageDialog(null, 
-              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
+              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon(getClass().getResource("/Icones/ok.png")));//salvo com sucesso
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
             
     }
@@ -125,10 +125,9 @@ public class PedidoDAO {
                 st.setInt(5, pedidoBeans.getCodCadapio(i));
                 st.setInt(6, pedidoBeans.getQuantidade(i));
                 st.execute();
-                
             } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, 
-                     "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+                     "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
             }
         }
     }

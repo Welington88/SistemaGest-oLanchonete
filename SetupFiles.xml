@@ -16,11 +16,11 @@
   <icon></icon>
   <jre>
     <path>java-runtime</path>
-    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJre64Bit>false</bundledJre64Bit>
     <bundledJreAsFallback>false</bundledJreAsFallback>
-    <minVersion>8.0.0</minVersion>
+    <minVersion>1.0</minVersion>
     <maxVersion></maxVersion>
-    <jdkPreference>jreOnly</jdkPreference>
+    <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64/32</runtimeBits>
   </jre>
 </launch4jConfig>

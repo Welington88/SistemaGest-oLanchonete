@@ -21,10 +21,10 @@ public class Conexao {
     private static Connection Con;
     
     //hospedado
-    /*private final String URL = "jdbc:mysql://sql185.main-hosting.eu:3306/u980658351_damata";
+    /*private final String URL = "jdbc:mysql://sql185.main-hosting.eu:3306/u980658351_sacra";
     private final String Driver = "com.mysql.jdbc.Driver";
-    private final String Usuario = "u980658351_root";
-    private final String Senha = "@wel1988";
+    private final String Usuario = "u980658351_rootA";
+    private final String Senha = "@Bcd1988";
     private static Connection Con;*/
     
     public Conexao() {
@@ -32,7 +32,7 @@ public class Conexao {
             Con = DriverManager.getConnection(URL, Usuario, Senha);
             Con.setAutoCommit(false);
             //JOptionPane.showMessageDialog(null,  "Conectado com Sucesso....", "Banco", 1);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, 
                     "Erro ao Conectar no Banco de Dados " + e, "Erro", 0);//mensagem de erro
         }
@@ -40,7 +40,7 @@ public class Conexao {
     
     public static Connection getConnection(){
         if(Con == null){
-            new Conexao();
+            Conexao conexao = new Conexao();
         }
         return Con;
     }

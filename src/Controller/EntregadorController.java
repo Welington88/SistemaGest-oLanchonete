@@ -31,7 +31,7 @@ public class EntregadorController {//controla as acoes do do sistema
         }
     }
     public String controleDeCódigo () {
-        return EntregadorDAO.proximoEntregador();
+        return entregadorDAO.proximoEntregador();
     }
     
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){

@@ -32,15 +32,15 @@ public class EntregadorDAO {
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
-              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//mensagem de erro
+              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon(getClass().getResource("/Icones/ok.png")));//mensagem de erro
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
                 
     }
     
-    public static String  proximoEntregador(){
+    public String  proximoEntregador(){
         String SQLSelection = "select * from `entregador` order by `ent_cod` desc limit 1";
         try {
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
@@ -52,7 +52,7 @@ public class EntregadorDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
-                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+                    "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
             return "0";
         }
     }
@@ -69,8 +69,8 @@ public class EntregadorDAO {
                 });
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
-                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
+                    "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
 
     }
@@ -88,8 +88,8 @@ public class EntregadorDAO {
                 entregadorBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("ent_data_cad")));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
-                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
+                    "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
         return entregadorBeans;
     }
@@ -105,10 +105,10 @@ public class EntregadorDAO {
             st.execute();   
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
-              "Dados Editados com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//mensagem de erro
+              "Dados Editados com sucesso!!!", "Salvo", 1,new ImageIcon(getClass().getResource("/Icones/ok.png")));//mensagem de erro
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
         
     }
@@ -127,7 +127,7 @@ public class EntregadorDAO {
             }
             return lista;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
                     "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         }
         return null;

@@ -40,7 +40,7 @@ public class CardapioController {//controla as acoes do do sistema
         }
     }
     public String controleDeCódigo () {
-        return CardapioDAO.proximoNumero();
+        return cardapioDAO.proximoNumero();
     }
     
     public void controlePesquisa(String pesquisa, DefaultTableModel modeloTabela){
@@ -67,7 +67,7 @@ public class CardapioController {//controla as acoes do do sistema
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
             return false;
         }else {//caso estiver tudo preenchido
-            cardapioDAO.inserir(obj);
+            cardapioDAO.editar(obj);
             return true;
         }
     }

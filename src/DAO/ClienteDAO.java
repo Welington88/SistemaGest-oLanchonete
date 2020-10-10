@@ -33,15 +33,16 @@ public class ClienteDAO {
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
-              "Dados Salvo com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//salvo com sucesso
+              "Dados Salvo com sucesso!!!", "Salvo", 1,
+              new ImageIcon(getClass().getResource("/Icones/ok.png")));//salvo com sucesso
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
                 
     }
     
-    public static String  proximoCliente(){
+    public String  proximoCliente(){
         String SQLSelection = "select * from clientes order by cli_cod desc limit 1";
         try {
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
@@ -53,7 +54,7 @@ public class ClienteDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
-                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+                    "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
             return "0";
         }
     }
@@ -73,8 +74,8 @@ public class ClienteDAO {
                 });
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
-                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
+                    "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
 
     }
@@ -95,8 +96,8 @@ public class ClienteDAO {
                 clienteBeans.setDataCad(CorretorDatas.ConverterParaJava(Rs.getString("cli_data_cad")));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
-                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
+                    "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
         return clienteBeans;
     }
@@ -106,7 +107,7 @@ public class ClienteDAO {
         try {
             String SQLInsertion = 
                 "UPDATE `clientes` SET `cli_nome`=?,`cli_rua`=?,`cli_bairro`=?,`cli_telefone`=? WHERE `cli_cod`=?";
-            PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
+            PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);         
             st.setString(1, cliente.getNome());
             st.setString(2, cliente.getRua());
             st.setString(3, cliente.getBairro());
@@ -116,10 +117,10 @@ public class ClienteDAO {
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.
             JOptionPane.showMessageDialog(null, 
-              "Dados Editados com sucesso!!!", "Salvo", 1,new ImageIcon("imagens/ok.png"));//mensagem de erro
+              "Dados Editados com sucesso!!!", "Salvo", 1,new ImageIcon(getClass().getResource("/Icones/ok.png")));//mensagem de erro
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, 
-              "Erro ao Inserir no Banco de Dados" + ex, "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
         
     }
@@ -137,8 +138,8 @@ public class ClienteDAO {
                  );
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados" + ex,
-                    "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+            JOptionPane.showMessageDialog(null, "Erro ao Consultar no Banco de Dados",
+                    "Erro", 0,new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
         }
 
     }
