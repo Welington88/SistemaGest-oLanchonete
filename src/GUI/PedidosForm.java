@@ -708,8 +708,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void txt_ValorMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_ValorMouseMoved
         // TODO add your handling code here:
-        if (!(cb_itens.getSelectedItem().toString().equals(""))) {
-            preencherValor();
+        try {
+            if (!(cb_itens.getSelectedItem().toString().equals(""))) {
+                preencherValor();
+            }
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_txt_ValorMouseMoved
 

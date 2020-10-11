@@ -20,12 +20,12 @@ public class EstoqueDAO {
     public void inserir(EstoqueBeans obj){
         try {
             String SQLInsertion = 
-            "INSERT INTO `estoque`(`est_car_cod`, `est_nfe`, `est_valor`, `est_qtd`) VALUES (?,?,?,?);";
+            "INSERT INTO `estoque`(`est_car_cod`, `est_nfe`, `est_valor`, `est_qtd`,`est_data_hora`) VALUES (?,?,?,?,now());";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
             st.setInt(1, obj.getCodigoProduto());
             st.setString(2, obj.getNfe());
-            st.setInt(3, obj.getQuantidade());
-            st.setFloat(4, obj.getValor());
+            st.setFloat(3, obj.getValor());
+            st.setInt(4, obj.getQuantidade());
             
             st.execute();
             Conexao.getConnection().commit();// verifica se tudo está salvo correto.

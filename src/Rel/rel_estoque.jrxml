@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_estoque" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8f7cf367-c97b-4cad-8fcb-5572e3e8c365">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT `est_car_cod`,`car_descricao`,`SUM(``est_qtd``)`,`SUM(``item_quantidade``)`,
+	SUM(`SUM(``est_qtd``)`-`SUM(``item_quantidade``)`)
+FROM ((`estoqueview` INNER JOIN `itemview` ON `item_car_cod`=`est_car_cod` )
+      INNER JOIN `cardapio` ON `est_car_cod`=`car_cod`  ) GROUP BY `est_car_cod`;]]>
+	</queryString>
+	<field name="est_car_cod" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="car_descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUM(`est_qtd`)" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUM(`item_quantidade`)" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUM(`SUM(``est_qtd``)`-`SUM(``item_quantidade``)`)" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="201" y="17" width="144" height="20" uuid="77453879-5202-4a62-a917-bd55a4f055ae"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatorio Estoque]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="442" y="17" width="100" height="20" uuid="3d21d2b1-883b-4c18-9386-c72a7f663ba4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="b0035ddd-63f7-43f7-9eac-b873a2b589b6"/>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="0" width="100" height="20" uuid="83ca9782-7af1-438d-9487-5425d098966f"/>
+				<text><![CDATA[Descricao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="0" width="100" height="20" uuid="e1d6c353-00e5-4927-908c-fb23b6ed2198"/>
+				<text><![CDATA[Total Entradas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="0" width="100" height="20" uuid="736217a4-8495-42af-93c9-6eaac6554010"/>
+				<text><![CDATA[Total Saidas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="0" width="100" height="20" uuid="09cfd7df-0f77-4cd5-8b45-85e83879b2fb"/>
+				<text><![CDATA[Estoque]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8e4df602-0bc9-46c6-a0bb-47a4770bc054"/>
+				<textFieldExpression><![CDATA[$F{est_car_cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="100" height="20" uuid="92263c0c-2686-4389-b50e-a8f11739b0ec"/>
+				<textFieldExpression><![CDATA[$F{car_descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="0" width="100" height="20" uuid="c3fdcd2e-4f2c-4991-91f5-e93bd9301cdc"/>
+				<textFieldExpression><![CDATA[$F{SUM(`est_qtd`)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="0" width="100" height="20" uuid="4463ee69-88d2-4180-8034-17754b1dc8c3"/>
+				<textFieldExpression><![CDATA[$F{SUM(`item_quantidade`)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="0" width="100" height="20" uuid="c466aff5-2b5a-4725-a39a-ea02f33f2ba4"/>
+				<textFieldExpression><![CDATA[$F{SUM(`SUM(``est_qtd``)`-`SUM(``item_quantidade``)`)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

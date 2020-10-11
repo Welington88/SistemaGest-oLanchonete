@@ -41,19 +41,24 @@ public class Index extends javax.swing.JFrame {
         menuCliente.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_clientes.png")));
         menuFuncionario.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_func.png")));
         menuCardapio.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png")));
+        menuRelCardapio.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png")));
         menuEntregador.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_boy.png")));
         
         menuCadastro.setIcon(new ImageIcon(getClass().getResource("/Icones/inserir-32.png")));
         menuCaixa.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_caixa.png")));
+        menuRelVendas.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_caixa.png")));
         menuRelatorios.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_rel.png")));
         menuSair.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         menuSairFilho.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         menuPedidos.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_pedidos.png")));
+        menuRelSaidas.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_pedidos.png")));
         menuRelClientes.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_clientes.png")));
         menuRelEstoque.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_func.png")));
         menuTelaPedidosTela.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
         menuEntradaEstoque.setIcon(new ImageIcon(getClass().getResource("/Icones/inserir-32.png")));
+        menuRelEntradas.setIcon(new ImageIcon(getClass().getResource("/Icones/inserir-32.png")));
         telaPedido.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
+        
         
         //imagem do topo
         ImageIcon icone = new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"));
@@ -83,6 +88,10 @@ public class Index extends javax.swing.JFrame {
         menuRelatorios = new javax.swing.JMenu();
         menuRelClientes = new javax.swing.JMenuItem();
         menuRelEstoque = new javax.swing.JMenuItem();
+        menuRelCardapio = new javax.swing.JMenuItem();
+        menuRelEntradas = new javax.swing.JMenuItem();
+        menuRelSaidas = new javax.swing.JMenuItem();
+        menuRelVendas = new javax.swing.JMenuItem();
         menuTelaPedidosTela = new javax.swing.JMenu();
         telaPedido = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
@@ -166,7 +175,44 @@ public class Index extends javax.swing.JFrame {
         menuRelatorios.add(menuRelClientes);
 
         menuRelEstoque.setText("Estoque");
+        menuRelEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelEstoqueActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(menuRelEstoque);
+
+        menuRelCardapio.setText("Cardápio");
+        menuRelCardapio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelCardapioActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(menuRelCardapio);
+
+        menuRelEntradas.setText("Entradas Estoque");
+        menuRelEntradas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelEntradasActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(menuRelEntradas);
+
+        menuRelSaidas.setText("Saídas Estoque");
+        menuRelSaidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelSaidasActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(menuRelSaidas);
+
+        menuRelVendas.setText("Vendas por Dia");
+        menuRelVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelVendasActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(menuRelVendas);
 
         jMenuBar1.add(menuRelatorios);
 
@@ -281,6 +327,80 @@ public class Index extends javax.swing.JFrame {
         entradaForm.setVisible(true);
     }//GEN-LAST:event_menuEntradaEstoqueActionPerformed
 
+    private void menuRelEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelEstoqueActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            
+            InputStream caminho = 
+                    getClass().getResourceAsStream("/Rel/rel_estoque.jasper");
+            JasperPrint print = JasperFillManager.fillReport(caminho, null, conexao);//relatorio
+            JasperViewer.viewReport(print,false);
+            /*JasperViewer jasperViewer = new JasperViewer(print,false);
+            jasperViewer.setVisible(true);*/
+            
+        } catch (JRException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuRelEstoqueActionPerformed
+
+    private void menuRelCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelCardapioActionPerformed
+        // TODO add your handling code here:
+        try {
+            InputStream caminho = getClass().getResourceAsStream("/Rel/rel_cardapio.jasper");
+            JasperPrint print = JasperFillManager.fillReport(caminho, null, conexao);//relatorio
+            JasperViewer.viewReport(print,false);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuRelCardapioActionPerformed
+
+    private void menuRelEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelEntradasActionPerformed
+        // TODO add your handling code here:
+                try {
+            // TODO add your handling code here:
+            
+            InputStream caminho = 
+                    getClass().getResourceAsStream("/Rel/rel_entradas.jasper");
+            JasperPrint print = JasperFillManager.fillReport(caminho, null, conexao);//relatorio
+            JasperViewer.viewReport(print,false);
+            /*JasperViewer jasperViewer = new JasperViewer(print,false);
+            jasperViewer.setVisible(true);*/
+            
+        } catch (JRException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuRelEntradasActionPerformed
+
+    private void menuRelSaidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelSaidasActionPerformed
+        // TODO add your handling code here:
+        try {
+            InputStream caminho = getClass().getResourceAsStream("/Rel/rel_saidas.jasper");
+            JasperPrint print = JasperFillManager.fillReport(caminho, null, conexao);//relatorio
+            JasperViewer.viewReport(print,false);
+            /*JasperViewer jasperViewer = new JasperViewer(print,false);
+            jasperViewer.setVisible(true);*/
+            
+        } catch (JRException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuRelSaidasActionPerformed
+
+    private void menuRelVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelVendasActionPerformed
+        // TODO add your handling code here:
+          try {
+            InputStream caminho = getClass().getResourceAsStream("/Rel/vendas_dia.jasper");
+            JasperPrint print = JasperFillManager.fillReport(caminho, null, conexao);//relatorio
+            JasperViewer.viewReport(print,false);
+            /*JasperViewer jasperViewer = new JasperViewer(print,false);
+            jasperViewer.setVisible(true);*/
+            
+        } catch (JRException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuRelVendasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,8 +446,12 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuEntregador;
     private javax.swing.JMenuItem menuFuncionario;
     private javax.swing.JMenuItem menuPedidos;
+    private javax.swing.JMenuItem menuRelCardapio;
     private javax.swing.JMenuItem menuRelClientes;
+    private javax.swing.JMenuItem menuRelEntradas;
     private javax.swing.JMenuItem menuRelEstoque;
+    private javax.swing.JMenuItem menuRelSaidas;
+    private javax.swing.JMenuItem menuRelVendas;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenu menuSair;
     private javax.swing.JMenuItem menuSairFilho;
