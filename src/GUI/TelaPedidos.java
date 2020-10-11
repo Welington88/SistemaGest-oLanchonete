@@ -93,7 +93,7 @@ public class TelaPedidos extends javax.swing.JFrame {
             }
         });
 
-        cb_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pedido Fechado", "Pedido Aberto", "Pedico Cancelado" }));
+        cb_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pedido Aberto", "Pedido Entregue", "Pedido Fechado", "Pedido Cancelado" }));
 
         btn_status.setText("Salvar Status");
         btn_status.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

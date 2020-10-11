@@ -29,6 +29,7 @@ public class Index extends javax.swing.JFrame {
     EntregadorForm entregadorForm;
     PedidosForm pedidosForm;
     TelaPedidos telaPedidos;
+    EntradaForm entradaForm;
     Connection conexao = null;
     
     public Index() {
@@ -51,6 +52,7 @@ public class Index extends javax.swing.JFrame {
         menuRelClientes.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_clientes.png")));
         menuRelEstoque.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_func.png")));
         menuTelaPedidosTela.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
+        menuEntradaEstoque.setIcon(new ImageIcon(getClass().getResource("/Icones/inserir-32.png")));
         telaPedido.setIcon(new ImageIcon(getClass().getResource("/Icones/ico_tela.png")));
         
         //imagem do topo
@@ -77,6 +79,7 @@ public class Index extends javax.swing.JFrame {
         menuEntregador = new javax.swing.JMenuItem();
         menuCaixa = new javax.swing.JMenu();
         menuPedidos = new javax.swing.JMenuItem();
+        menuEntradaEstoque = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuRelClientes = new javax.swing.JMenuItem();
         menuRelEstoque = new javax.swing.JMenuItem();
@@ -140,6 +143,14 @@ public class Index extends javax.swing.JFrame {
             }
         });
         menuCaixa.add(menuPedidos);
+
+        menuEntradaEstoque.setText("Entrada Estoque");
+        menuEntradaEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEntradaEstoqueActionPerformed(evt);
+            }
+        });
+        menuCaixa.add(menuEntradaEstoque);
 
         jMenuBar1.add(menuCaixa);
 
@@ -263,6 +274,13 @@ public class Index extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_menuSairFilhoActionPerformed
 
+    private void menuEntradaEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntradaEstoqueActionPerformed
+        // TODO add your handling code here:
+        entradaForm = new EntradaForm();//chamar o form
+        tela.add(entradaForm);
+        entradaForm.setVisible(true);
+    }//GEN-LAST:event_menuEntradaEstoqueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -304,6 +322,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JMenu menuCaixa;
     private javax.swing.JMenuItem menuCardapio;
     private javax.swing.JMenuItem menuCliente;
+    private javax.swing.JMenuItem menuEntradaEstoque;
     private javax.swing.JMenuItem menuEntregador;
     private javax.swing.JMenuItem menuFuncionario;
     private javax.swing.JMenuItem menuPedidos;

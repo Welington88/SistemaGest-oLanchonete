@@ -183,10 +183,11 @@
         <Component class="javax.swing.JComboBox" name="cb_status">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Pedido Fechado"/>
-                <StringItem index="1" value="Pedido Aberto"/>
-                <StringItem index="2" value="Pedico Cancelado"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Pedido Aberto"/>
+                <StringItem index="1" value="Pedido Entregue"/>
+                <StringItem index="2" value="Pedido Fechado"/>
+                <StringItem index="3" value="Pedido Cancelado"/>
               </StringArray>
             </Property>
           </Properties>

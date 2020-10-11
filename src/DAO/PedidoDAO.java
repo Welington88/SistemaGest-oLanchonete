@@ -98,8 +98,9 @@ public class PedidoDAO {
             st.setString(6,CodigoEntregador);
             st.setString(7,"Pedido Aberto");
             st.execute();
+            //cadastrar estoque
             CadastraItens(CodigoCliente, CodigoFuncionario, codigoDoPedido(), 
-                    TamanhoTabela, pedidoBeans);
+                    CodigoEntregador,TamanhoTabela, pedidoBeans);
             codigoDoPedido();
             Conexao.getConnection().commit();
             JOptionPane.showMessageDialog(null, 
@@ -112,13 +113,13 @@ public class PedidoDAO {
     }
     
     public void CadastraItens(String codigoCliente, String codigoFuncionario, 
-            String codigoPedido, int tamanhoTabela, PedidoBeans pedidoBeans){
+            String codigoPedido, String codigoEntregador,int tamanhoTabela, PedidoBeans pedidoBeans){
         for (int i = 0; i < tamanhoTabela; i++) {
             try {
                 String SQLInserir =
                         "INSERT INTO `item`(`item_ent_cod`, `item_fun_cod`, `item_cli_cod`, `item_ped_cod`, `item_car_cod`, `item_quantidade`) VALUES (?,?,?,?,?,?);";
                 PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInserir);
-                st.setString(1, "1");
+                st.setString(1, codigoEntregador);
                 st.setString(2, codigoFuncionario);
                 st.setString(3, codigoCliente);
                 st.setString(4, codigoPedido);

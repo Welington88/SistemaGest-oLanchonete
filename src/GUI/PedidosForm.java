@@ -48,7 +48,6 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     
     public PedidosForm() {
         initComponents();
-        habilitarCampos(false);
         
         clienteBeans =  new ClienteBeans();
         clienteController = new ClienteController();
@@ -154,10 +153,15 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Nome:");
 
+        txt_nome.setEditable(false);
+
         jLabel3.setText("Rua:");
+
+        txt_rua.setEditable(false);
 
         jLabel4.setText("Bairro:");
 
+        txt_bairro.setEditable(false);
         txt_bairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_bairroActionPerformed(evt);
@@ -165,6 +169,8 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setText("Telefone:");
+
+        txt_telefone.setEditable(false);
 
         jLabel6.setText("Data:");
 
@@ -178,6 +184,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         });
 
         btn_fechar.setText("Fechar");
+        btn_fechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_fecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelClientesLayout = new javax.swing.GroupLayout(painelClientes);
         painelClientes.setLayout(painelClientesLayout);
@@ -199,30 +210,26 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelClientesLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_pedido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_fechar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelClientesLayout.createSequentialGroup()
-                        .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_codigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_rua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_bairro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(10, Short.MAX_VALUE))
-                    .addGroup(painelClientesLayout.createSequentialGroup()
-                        .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelClientesLayout.createSequentialGroup()
-                                .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelClientesLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btn_pedido)
+                                .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_fechar)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(painelClientesLayout.createSequentialGroup()
-                        .addComponent(cb_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_rua, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 4, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         painelClientesLayout.setVerticalGroup(
             painelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,6 +296,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jLabel8.setText("Selecionar:");
 
         cb_itens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar item ao lado" }));
+        cb_itens.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_itensItemStateChanged(evt);
+            }
+        });
         cb_itens.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cb_itensFocusLost(evt);
@@ -310,6 +322,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jLabel9.setText("Valor:");
 
         txt_Valor.setEditable(false);
+        txt_Valor.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                txt_ValorMouseMoved(evt);
+            }
+        });
 
         jLabel10.setText("Quant.:");
 
@@ -327,6 +344,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         jLabel12.setText("Cliente:");
 
         btn_adicionar.setText("+");
+        btn_adicionar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btn_adicionarMouseMoved(evt);
+            }
+        });
         btn_adicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_adicionarActionPerformed(evt);
@@ -658,7 +680,6 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                 txt_total.getText(), 
                 tabela.getRowCount(),pedidoBeans
         );
-        limparFinalizar();
     }//GEN-LAST:event_btn_finalizarActionPerformed
 
     private void cb_entregadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_entregadorActionPerformed
@@ -667,7 +688,35 @@ public class PedidosForm extends javax.swing.JInternalFrame {
 
     private void cb_itensFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cb_itensFocusLost
         // TODO add your handling code here:
+        preencherValor();
     }//GEN-LAST:event_cb_itensFocusLost
+
+    private void cb_itensItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_itensItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_itensItemStateChanged
+
+    private void btn_adicionarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_adicionarMouseMoved
+        // TODO add your handling code here:
+        try {
+            if (!(cb_itens.getSelectedItem().toString().equals(""))) {
+                preencherValor();
+            }
+        } catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_btn_adicionarMouseMoved
+
+    private void txt_ValorMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_ValorMouseMoved
+        // TODO add your handling code here:
+        if (!(cb_itens.getSelectedItem().toString().equals(""))) {
+            preencherValor();
+        }
+    }//GEN-LAST:event_txt_ValorMouseMoved
+
+    private void btn_fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fecharActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_fecharActionPerformed
 
     final void habilitarCampos(boolean valor){
         txt_bairro.setEnabled(valor);

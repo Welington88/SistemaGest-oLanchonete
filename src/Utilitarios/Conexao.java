@@ -34,7 +34,7 @@ public class Conexao {
             //JOptionPane.showMessageDialog(null,  "Conectado com Sucesso....", "Banco", 1);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, 
-                    "Erro ao Conectar no Banco de Dados " + e, "Erro", 0);//mensagem de erro
+                    "Erro ao Conectar no Banco de Dados ", "Erro", 0);//mensagem de erro
         }
     }
     

@@ -1,6 +1,7 @@
 package Controller;
 
 import Beans.CardapioBeans;
+import Beans.EstoqueBeans;
 import DAO.CardapioDAO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
