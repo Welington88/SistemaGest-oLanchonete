@@ -54,6 +54,9 @@ public class TelaPedidos extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_resumo_pedidos = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txt_valor_total_pedido = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,49 +126,61 @@ public class TelaPedidos extends javax.swing.JFrame {
 
         jLabel2.setText("Resumo Pedido:");
 
+        jLabel3.setText("Valor Total:");
+
+        txt_valor_total_pedido.setEditable(false);
+        txt_valor_total_pedido.setAutoscrolls(false);
+        txt_valor_total_pedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txt_valor_total_pedido.setMaximumSize(new java.awt.Dimension(25, 100));
+        jScrollPane4.setViewportView(txt_valor_total_pedido);
+
         javax.swing.GroupLayout painelTelaPedidosLayout = new javax.swing.GroupLayout(painelTelaPedidos);
         painelTelaPedidos.setLayout(painelTelaPedidosLayout);
         painelTelaPedidosLayout.setHorizontalGroup(
             painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTelaPedidosLayout.createSequentialGroup()
-                .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelTelaPedidosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(painelTelaPedidosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3))
-                    .addGroup(painelTelaPedidosLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(btn_atualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_status)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                        .addComponent(btn_sair)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTelaPedidosLayout.createSequentialGroup()
+                        .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane3)
+                            .addGroup(painelTelaPedidosLayout.createSequentialGroup()
+                                .addComponent(btn_atualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_status)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_sair)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15))))
         );
         painelTelaPedidosLayout.setVerticalGroup(
             painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_sair)
-                        .addComponent(btn_status)
-                        .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_atualizar)
-                        .addComponent(jLabel1)))
+                    .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_sair)
+                            .addComponent(btn_status)
+                            .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_atualizar)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,6 +227,9 @@ public class TelaPedidos extends javax.swing.JFrame {
         List<String> consultarPedido = telaPedidosController.consultarPedido(
                 Integer.parseInt(txt_n_pedido_tela.getText()));
         txt_resumo_pedidos.setText(consultarPedido.toString());
+        double consultarPedidoValor = telaPedidosController.consultarPedidoValor(
+                Integer.parseInt(txt_n_pedido_tela.getText()));
+        txt_valor_total_pedido.setText(String.valueOf(consultarPedidoValor).replace(".", ","));
     }//GEN-LAST:event_tabelaPedidosMouseClicked
 
     private void btn_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statusActionPerformed
@@ -268,12 +286,15 @@ public class TelaPedidos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_status;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel painelTelaPedidos;
     private javax.swing.JTable tabelaPedidos;
     private javax.swing.JTextPane txt_n_pedido_tela;
     private javax.swing.JTextArea txt_resumo_pedidos;
+    private javax.swing.JTextPane txt_valor_total_pedido;
     // End of variables declaration//GEN-END:variables
 }

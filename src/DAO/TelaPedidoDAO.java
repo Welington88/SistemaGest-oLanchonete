@@ -87,4 +87,23 @@ public class TelaPedidoDAO {
         }
         return null;
     }
+    
+    public double consultarPedidoValor(int num_pedido){
+        double valor = 0; 
+        try {
+            String SQL = "SELECT `ped_total` FROM `pedidos` WHERE `ped_cod`=?;";
+            PreparedStatement st;
+            st = Conexao.getConnection().prepareStatement(SQL);
+            st.setInt(1,num_pedido);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {//somente uma retorno             
+               valor = Double.parseDouble(rs.getString("ped_total"));
+            }
+            return valor;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+        return 0;
+    }
 }

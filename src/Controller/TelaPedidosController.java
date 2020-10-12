@@ -42,4 +42,12 @@ public class TelaPedidosController {
             return null;
         }
     }
+    
+    public double consultarPedidoValor(int codigoPedido){
+        if (codigoPedido > 0) {
+            return telaPedidoDAO.consultarPedidoValor(codigoPedido);
+        } else{
+            return 0;
+        }
+    }
 }
