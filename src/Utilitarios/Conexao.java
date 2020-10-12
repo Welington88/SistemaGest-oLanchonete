@@ -1,7 +1,6 @@
 package Utilitarios;
 
 import java.sql.Connection;
-import com.mysql.jdbc.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;

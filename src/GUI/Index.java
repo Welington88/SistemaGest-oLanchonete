@@ -2,6 +2,7 @@ package GUI;//GUI refere-se a denominação "Graphical User Interface"
 
 import Utilitarios.Conexao;
 import Utilitarios.FundoTela;
+import Utilitarios.Licenca;
 import java.awt.GridLayout;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -31,6 +33,7 @@ public class Index extends javax.swing.JFrame {
     TelaPedidos telaPedidos;
     EntradaForm entradaForm;
     Connection conexao = null;
+    Licenca licenca;
     
     public Index() {
         initComponents();
@@ -65,6 +68,7 @@ public class Index extends javax.swing.JFrame {
         setIconImage(icone.getImage());
         
         conexao = Conexao.getConnection();
+        licenca = new Licenca();
     }
 
     /**
@@ -99,6 +103,11 @@ public class Index extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sacras Leopoldina");
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         menuCadastro.setText("Cadastro");
         menuCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -400,6 +409,16 @@ public class Index extends javax.swing.JFrame {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuRelVendasActionPerformed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+        if (licenca.licencaProduto()) {
+            JOptionPane.showMessageDialog(null, 
+              "Sistema somente para Teste procure o Desenvolvedor", "Erro", 0,
+              new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));//mensagem de erro
+            dispose();
+        }         
+    }//GEN-LAST:event_formMouseMoved
 
     /**
      * @param args the command line arguments
