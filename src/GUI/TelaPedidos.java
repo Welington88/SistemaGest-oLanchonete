@@ -104,6 +104,7 @@ public class TelaPedidos extends javax.swing.JFrame {
         });
 
         txt_n_pedido_tela.setEditable(false);
+        txt_n_pedido_tela.setAutoscrolls(false);
         txt_n_pedido_tela.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txt_n_pedido_tela.setMaximumSize(new java.awt.Dimension(25, 100));
         jScrollPane2.setViewportView(txt_n_pedido_tela);
@@ -116,10 +117,10 @@ public class TelaPedidos extends javax.swing.JFrame {
             painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTelaPedidosLayout.createSequentialGroup()
                 .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelTelaPedidosLayout.createSequentialGroup()
+                    .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelTelaPedidosLayout.createSequentialGroup()
+                    .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(btn_atualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -139,7 +140,7 @@ public class TelaPedidos extends javax.swing.JFrame {
             .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_sair)
                         .addComponent(btn_status)
