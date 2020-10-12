@@ -87,8 +87,8 @@ public class Index extends javax.swing.JFrame {
         menuEntradaEstoque = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuRelClientes = new javax.swing.JMenuItem();
-        menuRelEstoque = new javax.swing.JMenuItem();
         menuRelCardapio = new javax.swing.JMenuItem();
+        menuRelEstoque = new javax.swing.JMenuItem();
         menuRelEntradas = new javax.swing.JMenuItem();
         menuRelSaidas = new javax.swing.JMenuItem();
         menuRelVendas = new javax.swing.JMenuItem();
@@ -174,14 +174,6 @@ public class Index extends javax.swing.JFrame {
         });
         menuRelatorios.add(menuRelClientes);
 
-        menuRelEstoque.setText("Estoque");
-        menuRelEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRelEstoqueActionPerformed(evt);
-            }
-        });
-        menuRelatorios.add(menuRelEstoque);
-
         menuRelCardapio.setText("Cardápio");
         menuRelCardapio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +181,14 @@ public class Index extends javax.swing.JFrame {
             }
         });
         menuRelatorios.add(menuRelCardapio);
+
+        menuRelEstoque.setText("Estoque");
+        menuRelEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelEstoqueActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(menuRelEstoque);
 
         menuRelEntradas.setText("Entradas Estoque");
         menuRelEntradas.addActionListener(new java.awt.event.ActionListener() {
