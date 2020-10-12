@@ -81,13 +81,14 @@ public class PedidoDAO {
     public void CadastrarPedido(String CodigoCliente, 
                                 String CodigoFuncionario,
                                 String CodigoEntregador,
+                                String formaPGTO,
                                 String Total, int TamanhoTabela, PedidoBeans pedidoBeans){
         try {
             Date data = new Date();
             SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
             String SQLInsert = 
-            "INSERT INTO `pedidos`(`ped_data`,`ped_hora`,`ped_total`,`ped_cli_cod`,`ped-fun-cod`,`ped-ent-cod`,`ped_status`) VALUES (?,?,?,?,?,?,?);";
+            "INSERT INTO `pedidos`(`ped_data`,`ped_hora`,`ped_total`,`ped_cli_cod`,`ped-fun-cod`,`ped-ent-cod`,`ped_status`,`ped_forma_pgto`) VALUES (?,?,?,?,?,?,?,?);";
             PreparedStatement st;
             st = Conexao.getConnection().prepareStatement(SQLInsert);
             st.setString(1,formatoData.format(data));
@@ -97,6 +98,7 @@ public class PedidoDAO {
             st.setString(5,CodigoFuncionario);
             st.setString(6,CodigoEntregador);
             st.setString(7,"Pedido Aberto");
+            st.setString(8, formaPGTO);
             st.execute();
             //cadastrar estoque
             CadastraItens(CodigoCliente, CodigoFuncionario, codigoDoPedido(), 

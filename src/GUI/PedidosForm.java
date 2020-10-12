@@ -67,6 +67,8 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         DataAtual = new Date();
         dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         hourFormat = new SimpleDateFormat("HH:mm:ss");
+        
+        btn_pedido.setEnabled(false);
     }
 
     /**
@@ -127,6 +129,8 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         btn_fechar_two = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         cb_entregador = new javax.swing.JComboBox<>();
+        cb_forma_pgto = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -228,7 +232,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                             .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 4, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         painelClientesLayout.setVerticalGroup(
@@ -389,6 +393,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tabela);
 
+        btn_finalizar.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btn_finalizar.setText("Finalizar");
         btn_finalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_finalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -405,7 +410,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel14.setText("Entregador:");
+        jLabel14.setText("Forma PGTO:");
 
         cb_entregador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<<--Entregador" }));
         cb_entregador.addActionListener(new java.awt.event.ActionListener() {
@@ -414,15 +419,27 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             }
         });
 
+        cb_forma_pgto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de Crédito", "Outros" }));
+
+        jLabel15.setText("Entregador:");
+
         javax.swing.GroupLayout painelPedidosLayout = new javax.swing.GroupLayout(painelPedidos);
         painelPedidos.setLayout(painelPedidosLayout);
         painelPedidosLayout.setHorizontalGroup(
             painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPedidosLayout.createSequentialGroup()
+            .addGroup(painelPedidosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelPedidosLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_forma_pgto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_finalizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_fechar_two))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPedidosLayout.createSequentialGroup()
                         .addComponent(btn_valor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_calcular)
@@ -430,7 +447,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelPedidosLayout.createSequentialGroup()
+                    .addGroup(painelPedidosLayout.createSequentialGroup()
                         .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelPedidosLayout.createSequentialGroup()
                                 .addComponent(btn_adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -451,11 +468,9 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_cod_ped, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelPedidosLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel14)
-                                .addGap(18, 18, 18)
+                                .addGap(129, 129, 129)
                                 .addComponent(cb_entregador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelPedidosLayout.createSequentialGroup()
+                    .addGroup(painelPedidosLayout.createSequentialGroup()
                         .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(jLabel7))
@@ -469,12 +484,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                                 .addComponent(cb_itens, 0, 1, Short.MAX_VALUE))
                             .addComponent(txt_nome_cliente))))
                 .addGap(288, 288, 288))
-            .addGroup(painelPedidosLayout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(btn_finalizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_fechar_two)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelPedidosLayout.createSequentialGroup()
+                    .addGap(189, 189, 189)
+                    .addComponent(jLabel15)
+                    .addContainerGap(469, Short.MAX_VALUE)))
         );
         painelPedidosLayout.setVerticalGroup(
             painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,7 +519,6 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                         .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_adicionar)
                             .addComponent(btn_retirar)
-                            .addComponent(jLabel14)
                             .addComponent(cb_entregador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -515,9 +528,18 @@ public class PedidosForm extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_fechar_two)
-                    .addComponent(btn_finalizar))
+                    .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_fechar_two)
+                        .addComponent(btn_finalizar))
+                    .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cb_forma_pgto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(painelPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelPedidosLayout.createSequentialGroup()
+                    .addGap(178, 178, 178)
+                    .addComponent(jLabel15)
+                    .addContainerGap(207, Short.MAX_VALUE)))
         );
 
         painelPai.addTab("Pedidos", painelPedidos);
@@ -528,17 +550,17 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelPai, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelPai, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(painelPai, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelPai, javax.swing.GroupLayout.PREFERRED_SIZE, 440, Short.MAX_VALUE))
         );
 
-        setBounds(200, 50, 505, 492);
+        setBounds(200, 50, 489, 492);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_bairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bairroActionPerformed
@@ -578,6 +600,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
             txt_bairro.setText(clienteBeans.getBairro());
             txt_telefone.setText(clienteBeans.getTelefone());
             txt_data.setText(clienteBeans.getDataCad());
+            btn_pedido.setEnabled(true);
         }
     }//GEN-LAST:event_cb_ClientesActionPerformed
 
@@ -674,9 +697,11 @@ public class PedidosForm extends javax.swing.JInternalFrame {
         popularBeans();
         String codEntregador = cb_entregador.getSelectedItem().toString();
         codEntregador = codEntregador.substring(0, codEntregador.indexOf(" "));
+        String formaPGTO = cb_forma_pgto.getSelectedItem().toString();
         pedidoController.controleDePedido(txt_codigo.getText(), 
                 String.valueOf(codigoFuncionario), 
                 codEntregador,
+                formaPGTO,
                 txt_total.getText(), 
                 tabela.getRowCount(),pedidoBeans
         );
@@ -796,6 +821,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_valor;
     private javax.swing.JComboBox<String> cb_Clientes;
     private javax.swing.JComboBox<String> cb_entregador;
+    private javax.swing.JComboBox<String> cb_forma_pgto;
     private javax.swing.JComboBox<String> cb_itens;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -803,6 +829,7 @@ public class PedidosForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
