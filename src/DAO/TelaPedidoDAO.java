@@ -10,6 +10,8 @@ import Utilitarios.CorretorDatas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -65,4 +67,24 @@ public class TelaPedidoDAO {
             
     }
     
+    public List<String> consultarPedido(int num_pedido){
+        List<String> list = new ArrayList<>();
+        try {
+            String SQL = "SELECT `car_descricao`,`item_quantidade` FROM `item` "
+                    + "INNER JOIN `cardapio` ON `item`.`item_car_cod`=`cardapio`.`car_cod` WHERE `item_ped_cod`=?;";
+            PreparedStatement st;
+            st = Conexao.getConnection().prepareStatement(SQL);
+            st.setInt(1,num_pedido);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {                
+               list.add(" " + rs.getString("car_descricao"));
+               list.add(" --> QTD: " + rs.getString("item_quantidade"));
+            }
+            return list;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+              "Erro ao Inserir no Banco de Dados", "Erro", 0,new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
+        }
+        return null;
+    }
 }

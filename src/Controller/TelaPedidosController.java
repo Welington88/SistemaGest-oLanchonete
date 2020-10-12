@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.TelaPedidoDAO;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,13 @@ public class TelaPedidosController {
                 new ImageIcon("imagens/ico_sair.png"));//mensagem de erro
         } else {
             telaPedidoDAO.alterarPedido(statusPedidos,codigoCliente);
+        }
+    }
+    public List<String> consultarPedido(int codigoPedido){
+        if (codigoPedido > 0) {
+            return telaPedidoDAO.consultarPedido(codigoPedido);
+        } else{
+            return null;
         }
     }
 }
