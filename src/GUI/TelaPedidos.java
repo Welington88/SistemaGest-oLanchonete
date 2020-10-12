@@ -111,6 +111,7 @@ public class TelaPedidos extends javax.swing.JFrame {
         });
 
         txt_n_pedido_tela.setEditable(false);
+        txt_n_pedido_tela.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txt_n_pedido_tela.setAutoscrolls(false);
         txt_n_pedido_tela.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txt_n_pedido_tela.setMaximumSize(new java.awt.Dimension(25, 100));
@@ -129,6 +130,7 @@ public class TelaPedidos extends javax.swing.JFrame {
         jLabel3.setText("Valor Total:");
 
         txt_valor_total_pedido.setEditable(false);
+        txt_valor_total_pedido.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txt_valor_total_pedido.setAutoscrolls(false);
         txt_valor_total_pedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txt_valor_total_pedido.setMaximumSize(new java.awt.Dimension(25, 100));
@@ -146,7 +148,6 @@ public class TelaPedidos extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTelaPedidosLayout.createSequentialGroup()
                         .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
                             .addComponent(jScrollPane3)
                             .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                                 .addComponent(btn_atualizar)
@@ -164,26 +165,26 @@ public class TelaPedidos extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(15, 15, 15))))
+                        .addGap(15, 15, 15))
+                    .addComponent(jScrollPane1)))
         );
         painelTelaPedidosLayout.setVerticalGroup(
             painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelTelaPedidosLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_sair)
-                            .addComponent(btn_status)
-                            .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_atualizar)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(painelTelaPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_sair)
+                        .addComponent(btn_status)
+                        .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_atualizar)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3))
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
